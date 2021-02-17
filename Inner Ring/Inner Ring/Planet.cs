@@ -11,10 +11,21 @@ using System.Windows.Forms;
 namespace Inner_Ring
 {
     public partial class Planet : Form
-    {
+    { 
+
         public Planet()
         {
             InitializeComponent();
+            getAllPlanets();
+        }
+
+        private void getAllPlanets() { 
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

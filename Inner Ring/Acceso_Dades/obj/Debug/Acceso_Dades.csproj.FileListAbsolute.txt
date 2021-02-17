@@ -1,6 +1,5 @@
 C:\Users\Mario\Desktop\Github\G2Team\S2AM-G2-ICB0-PRJ03\Inner Ring\Ejecutables\Acceso_Dades.dll
 C:\Users\Mario\Desktop\Github\G2Team\S2AM-G2-ICB0-PRJ03\Inner Ring\Ejecutables\Acceso_Dades.pdb
-C:\Users\Mario\Desktop\Github\G2Team\S2AM-G2-ICB0-PRJ03\Inner Ring\Acceso_Dades\obj\Debug\Acceso_Dades.csprojAssemblyReference.cache
 C:\Users\Mario\Desktop\Github\G2Team\S2AM-G2-ICB0-PRJ03\Inner Ring\Acceso_Dades\obj\Debug\Acceso_Dades.csproj.CoreCompileInputs.cache
 C:\Users\Mario\Desktop\Github\G2Team\S2AM-G2-ICB0-PRJ03\Inner Ring\Acceso_Dades\obj\Debug\Acceso_Dades.dll
 C:\Users\Mario\Desktop\Github\G2Team\S2AM-G2-ICB0-PRJ03\Inner Ring\Acceso_Dades\obj\Debug\Acceso_Dades.pdb
