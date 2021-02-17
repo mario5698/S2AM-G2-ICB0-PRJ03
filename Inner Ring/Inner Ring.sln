@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inner Ring", "Inner Ring\Inner Ring.csproj", "{AAED00D0-62AF-43B6-81A3-99F4B16D6AE7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inner Ring Planet", "Inner Ring\Inner Ring Planet.csproj", "{AAED00D0-62AF-43B6-81A3-99F4B16D6AE7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inner Ring Spaceship", "Inner Ring Spaceship\Inner Ring Spaceship.csproj", "{D5BC2B5F-A581-490C-9E7B-13381345FC9A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{AAED00D0-62AF-43B6-81A3-99F4B16D6AE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AAED00D0-62AF-43B6-81A3-99F4B16D6AE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AAED00D0-62AF-43B6-81A3-99F4B16D6AE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5BC2B5F-A581-490C-9E7B-13381345FC9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5BC2B5F-A581-490C-9E7B-13381345FC9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5BC2B5F-A581-490C-9E7B-13381345FC9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5BC2B5F-A581-490C-9E7B-13381345FC9A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

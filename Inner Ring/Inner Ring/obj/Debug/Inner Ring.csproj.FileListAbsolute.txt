@@ -1,0 +1,10 @@
+C:\Users\Snake\Documents\GitHub\S2AM-G2-ICB0-PRJ03\Inner Ring\Inner Ring\bin\Debug\Inner Ring.exe.config
+C:\Users\Snake\Documents\GitHub\S2AM-G2-ICB0-PRJ03\Inner Ring\Inner Ring\bin\Debug\Inner Ring.exe
+C:\Users\Snake\Documents\GitHub\S2AM-G2-ICB0-PRJ03\Inner Ring\Inner Ring\bin\Debug\Inner Ring.pdb
+C:\Users\Snake\Documents\GitHub\S2AM-G2-ICB0-PRJ03\Inner Ring\Inner Ring\obj\Debug\Inner Ring.csprojAssemblyReference.cache
+C:\Users\Snake\Documents\GitHub\S2AM-G2-ICB0-PRJ03\Inner Ring\Inner Ring\obj\Debug\Inner_Ring.Properties.Resources.resources
+C:\Users\Snake\Documents\GitHub\S2AM-G2-ICB0-PRJ03\Inner Ring\Inner Ring\obj\Debug\Inner Ring.csproj.GenerateResource.cache
+C:\Users\Snake\Documents\GitHub\S2AM-G2-ICB0-PRJ03\Inner Ring\Inner Ring\obj\Debug\Inner Ring.csproj.CoreCompileInputs.cache
+C:\Users\Snake\Documents\GitHub\S2AM-G2-ICB0-PRJ03\Inner Ring\Inner Ring\obj\Debug\Inner Ring.exe
+C:\Users\Snake\Documents\GitHub\S2AM-G2-ICB0-PRJ03\Inner Ring\Inner Ring\obj\Debug\Inner Ring.pdb
+C:\Users\Snake\Documents\GitHub\S2AM-G2-ICB0-PRJ03\Inner Ring\Inner Ring\obj\Debug\Inner_Ring.Home.resources

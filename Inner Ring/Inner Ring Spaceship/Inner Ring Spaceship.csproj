@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{AAED00D0-62AF-43B6-81A3-99F4B16D6AE7}</ProjectGuid>
+    <ProjectGuid>{D5BC2B5F-A581-490C-9E7B-13381345FC9A}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Inner_Ring</RootNamespace>
-    <AssemblyName>Inner Ring</AssemblyName>
+    <RootNamespace>Inner_Ring_Spaceship</RootNamespace>
+    <AssemblyName>Inner Ring Spaceship</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

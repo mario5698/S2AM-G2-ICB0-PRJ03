@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Inner_Ring
 {
-    public partial class Form1 : Form
+    public partial class Planet : Form
     {
-        public Form1()
+        public Planet()
         {
             InitializeComponent();
         }
