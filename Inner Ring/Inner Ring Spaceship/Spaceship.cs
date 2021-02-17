@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Inner_Ring_Spaceship
 {
-    public partial class Form1 : Form
+    public partial class Spaceship : Form
     {
-        public Form1()
+        public Spaceship()
         {
             InitializeComponent();
         }

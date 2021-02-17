@@ -1,7 +1,7 @@
 ﻿
 namespace Inner_Ring_Spaceship
 {
-    partial class Form1
+    partial class Spaceship
     {
         /// <summary>
         /// Required designer variable.
