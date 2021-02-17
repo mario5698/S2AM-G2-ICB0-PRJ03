@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Configuration;
 
-namespace Acceso_Dades
+namespace AccesoDades
 {
     public abstract class Conexion
     {
@@ -19,7 +19,7 @@ namespace Acceso_Dades
 
         public Conexion()
         {
-            connectionString = ConfigurationManager.ConnectionStrings["SecureCore.Properties.Settings.SecureCoreConnectionString"].ConnectionString;
+            connectionString = ConfigurationManager.ConnectionStrings["Acceso_Dades.Properties.Settings.SecureCoreConnectionString"].ConnectionString;
         }
 
         private protected void Conectar(string query)

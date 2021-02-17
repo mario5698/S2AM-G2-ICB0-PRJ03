@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inner Ring Planet", "Inner 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inner Ring Spaceship", "Inner Ring Spaceship\Inner Ring Spaceship.csproj", "{D5BC2B5F-A581-490C-9E7B-13381345FC9A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acceso_Dades", "Acceso_Dades\Acceso_Dades.csproj", "{7EF7EAF2-D966-4F20-A306-A76267B5A31F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccesoDades", "Acceso_Dades\AccesoDades.csproj", "{7EF7EAF2-D966-4F20-A306-A76267B5A31F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
