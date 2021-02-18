@@ -16,11 +16,11 @@ namespace Inner_Ring
     {
         #region RSA
 
-        public byte[] encrypted;
-        CspParameters cspp;
+        public byte[] datosEncriptados;
+        CspParameters parametros;
         RSACryptoServiceProvider rsa;
-        string publicKey;
-        string path;
+        UnicodeEncoding convertidor;
+        string llavePublica;
 
         #endregion
 
@@ -56,6 +56,7 @@ namespace Inner_Ring
         {
             string valorRandom = RandomString(10);
             MessageBox.Show(valorRandom);
+            Test();
         }
 
         public static string RandomString(int length)
@@ -69,13 +70,33 @@ namespace Inner_Ring
 
         #region RSAFunciones
 
-        private void Encriptar()
+        void Test()
         {
-            cspp = new CspParameters();
-            cspp.KeyContainerName = txtRSA.Text;
-            rsa = new RSACryptoServiceProvider(cspp);
-            publicKey = rsa.ToXmlString(false);
-            //File.WriteAllText(path, publicKey);
+            //IniciarRSA();
+            //byte[] datos;
+            //datos = Encriptar(encryA.Text);
+            //encryB.Text = convertidor.GetString(datos);
+            //decryA.Text = convertidor.GetString(Desencriptar(datos));
+        }
+
+        private void IniciarRSA()
+        {
+            parametros = new CspParameters();
+            parametros.KeyContainerName = txtRSA.Text;
+            rsa = new RSACryptoServiceProvider(parametros);
+            convertidor = new UnicodeEncoding();
+            llavePublica = rsa.ToXmlString(false);
+        }
+
+        private byte[] Encriptar(string texto)
+        {
+            byte[] bytesTexto = convertidor.GetBytes(texto);
+            return rsa.Encrypt(bytesTexto, true);
+        }
+
+        private byte[] Desencriptar(byte[] texto)
+        {
+            return rsa.Decrypt(texto, true);
         }
 
         #endregion

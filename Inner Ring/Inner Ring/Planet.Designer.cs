@@ -32,6 +32,9 @@ namespace Inner_Ring
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.txtRSA = new System.Windows.Forms.TextBox();
+            this.encryA = new System.Windows.Forms.TextBox();
+            this.encryB = new System.Windows.Forms.TextBox();
+            this.decryA = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // comboBox1
@@ -60,12 +63,36 @@ namespace Inner_Ring
             this.txtRSA.Size = new System.Drawing.Size(100, 20);
             this.txtRSA.TabIndex = 2;
             // 
+            // encryA
+            // 
+            this.encryA.Location = new System.Drawing.Point(96, 245);
+            this.encryA.Name = "encryA";
+            this.encryA.Size = new System.Drawing.Size(100, 20);
+            this.encryA.TabIndex = 3;
+            // 
+            // encryB
+            // 
+            this.encryB.Location = new System.Drawing.Point(96, 271);
+            this.encryB.Name = "encryB";
+            this.encryB.Size = new System.Drawing.Size(100, 20);
+            this.encryB.TabIndex = 4;
+            // 
+            // decryA
+            // 
+            this.decryA.Location = new System.Drawing.Point(96, 297);
+            this.decryA.Name = "decryA";
+            this.decryA.Size = new System.Drawing.Size(100, 20);
+            this.decryA.TabIndex = 5;
+            // 
             // Planet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.decryA);
+            this.Controls.Add(this.encryB);
+            this.Controls.Add(this.encryA);
             this.Controls.Add(this.txtRSA);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.comboBox1);
@@ -82,6 +109,9 @@ namespace Inner_Ring
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox txtRSA;
+        private System.Windows.Forms.TextBox encryA;
+        private System.Windows.Forms.TextBox encryB;
+        private System.Windows.Forms.TextBox decryA;
     }
 }
 
