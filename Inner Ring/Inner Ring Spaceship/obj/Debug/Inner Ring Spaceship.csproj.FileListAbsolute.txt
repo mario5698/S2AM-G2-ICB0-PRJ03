@@ -6,3 +6,11 @@ C:\Users\Mario\Desktop\Github\G2Team\S2AM-G2-ICB0-PRJ03\Inner Ring\Inner Ring Sp
 C:\Users\Mario\Desktop\Github\G2Team\S2AM-G2-ICB0-PRJ03\Inner Ring\Inner Ring Spaceship\obj\Debug\Inner Ring Spaceship.csproj.CoreCompileInputs.cache
 C:\Users\Mario\Desktop\Github\G2Team\S2AM-G2-ICB0-PRJ03\Inner Ring\Inner Ring Spaceship\obj\Debug\Inner Ring Spaceship.exe
 C:\Users\Mario\Desktop\Github\G2Team\S2AM-G2-ICB0-PRJ03\Inner Ring\Inner Ring Spaceship\obj\Debug\Inner Ring Spaceship.pdb
+C:\Users\Snake\Documents\GitHub\S2AM-G2-ICB0-PRJ03\Inner Ring\Ejecutables\Inner Ring Spaceship.exe.config
+C:\Users\Snake\Documents\GitHub\S2AM-G2-ICB0-PRJ03\Inner Ring\Ejecutables\Inner Ring Spaceship.exe
+C:\Users\Snake\Documents\GitHub\S2AM-G2-ICB0-PRJ03\Inner Ring\Ejecutables\Inner Ring Spaceship.pdb
+C:\Users\Snake\Documents\GitHub\S2AM-G2-ICB0-PRJ03\Inner Ring\Inner Ring Spaceship\obj\Debug\Inner_Ring_Spaceship.Properties.Resources.resources
+C:\Users\Snake\Documents\GitHub\S2AM-G2-ICB0-PRJ03\Inner Ring\Inner Ring Spaceship\obj\Debug\Inner Ring Spaceship.csproj.GenerateResource.cache
+C:\Users\Snake\Documents\GitHub\S2AM-G2-ICB0-PRJ03\Inner Ring\Inner Ring Spaceship\obj\Debug\Inner Ring Spaceship.csproj.CoreCompileInputs.cache
+C:\Users\Snake\Documents\GitHub\S2AM-G2-ICB0-PRJ03\Inner Ring\Inner Ring Spaceship\obj\Debug\Inner Ring Spaceship.exe
+C:\Users\Snake\Documents\GitHub\S2AM-G2-ICB0-PRJ03\Inner Ring\Inner Ring Spaceship\obj\Debug\Inner Ring Spaceship.pdb
