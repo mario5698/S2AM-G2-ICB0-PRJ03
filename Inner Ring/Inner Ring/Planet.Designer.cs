@@ -31,6 +31,7 @@ namespace Inner_Ring
         {
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.txtRSA = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // comboBox1
@@ -43,7 +44,8 @@ namespace Inner_Ring
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(302, 108);
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(266, 85);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 1;
@@ -51,18 +53,27 @@ namespace Inner_Ring
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // txtRSA
+            // 
+            this.txtRSA.Location = new System.Drawing.Point(413, 87);
+            this.txtRSA.Name = "txtRSA";
+            this.txtRSA.Size = new System.Drawing.Size(100, 20);
+            this.txtRSA.TabIndex = 2;
+            // 
             // Planet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.txtRSA);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.comboBox1);
             this.ForeColor = System.Drawing.Color.PaleGreen;
             this.Name = "Planet";
             this.Text = "Home";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -70,6 +81,7 @@ namespace Inner_Ring
 
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txtRSA;
     }
 }
 

@@ -11,8 +11,7 @@ namespace AccesoDades
 {
     public abstract class Conexion
     {
-        protected string acceso = "AccesoNik";
-
+        protected string acceso = "Acceso";
         private string connectionString;
         private protected SqlConnection conexion;
         private protected SqlDataAdapter adaptador;
