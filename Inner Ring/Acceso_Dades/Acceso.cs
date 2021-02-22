@@ -17,7 +17,7 @@ namespace AccesoDades
 
         public Acceso()
         {
-            connectionString = ConfigurationManager.ConnectionStrings["Acceso_Dades.Properties.Settings.SecureCoreConnectionString"].ConnectionString;
+            connectionString = ConfigurationManager.ConnectionStrings["Acceso"].ConnectionString;
         }
 
         private protected void Conectar(string query = "select * from species")

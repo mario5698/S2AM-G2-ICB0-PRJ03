@@ -19,7 +19,7 @@ namespace AccesoDades
 
         public Conexion()
         {
-            connectionString = ConfigurationManager.ConnectionStrings["Acceso_Dades.Properties.Settings.SecureCoreConnectionString"].ConnectionString;
+            connectionString = ConfigurationManager.ConnectionStrings["Acceso"].ConnectionString;
         }
 
         private protected void Conectar(string query)
