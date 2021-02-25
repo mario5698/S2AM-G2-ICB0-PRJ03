@@ -21,7 +21,6 @@ namespace Inner_Ring
 {
     public partial class Planet : Form
     {
-
         public Planet()
         {
             InitializeComponent();
@@ -31,6 +30,12 @@ namespace Inner_Ring
 
         #region RSA
 
+        public byte[] datosEncriptados;
+        CspParameters parametros;
+        RSACryptoServiceProvider rsa;
+        UnicodeEncoding convertidor;
+        string llavePublica;
+
         public byte[] encrypted;
         Thread sendzip;
         Thread fitxers;
@@ -39,10 +44,8 @@ namespace Inner_Ring
         TcpListener Listener;
         TcpClient client;
         byte[] buffer;
+        byte[] datos;
         NetworkStream ns;
-        CspParameters cspp;
-        Byte[] dades;
-        RSACryptoServiceProvider rsa;
         string publicKey;
         string code;
         string path;
@@ -514,7 +517,7 @@ namespace Inner_Ring
             portPlanetSelected = planetSelected[0][11].ToString();
             try
             {
-                dades = Encoding.ASCII.GetBytes(txb_message.Text);
+                datos = Encoding.ASCII.GetBytes(txb_message.Text);
                 client = new TcpClient(txb_ip.Text, Int32.Parse(txb_portS.Text));
                 ns = client.GetStream();
                 byte[] nouBuffer = Encoding.ASCII.GetBytes(txb_message.Text);
@@ -532,19 +535,27 @@ namespace Inner_Ring
         {
         }
 
-        #endregion
 
-        #region RSAFunciones
-
-        private void Encriptar()
+        private void IniciarRSA()
         {
-            cspp = new CspParameters();
-            cspp.KeyContainerName = txtRSA.Text;
-            rsa = new RSACryptoServiceProvider(cspp);
-            publicKey = rsa.ToXmlString(false);
-            //File.WriteAllText(path, publicKey);
-
+            parametros = new CspParameters();
+            parametros.KeyContainerName = txtRSA.Text;
+            rsa = new RSACryptoServiceProvider(parametros);
+            convertidor = new UnicodeEncoding();
+            llavePublica = rsa.ToXmlString(false);
         }
+
+        private byte[] Encriptar(string texto)
+        {
+            byte[] bytesTexto = convertidor.GetBytes(texto);
+            return rsa.Encrypt(bytesTexto, true);
+        }
+
+        private byte[] Desencriptar(byte[] texto)
+        {
+            return rsa.Decrypt(texto, true);
+        }
+
         #endregion
 
     }
