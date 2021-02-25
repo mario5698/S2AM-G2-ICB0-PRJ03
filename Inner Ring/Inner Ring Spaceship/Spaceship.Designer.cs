@@ -29,7 +29,6 @@ namespace Inner_Ring_Spaceship
         /// </summary>
         private void InitializeComponent()
         {
-
             this.components = new System.ComponentModel.Container();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.GetInfoPlanet = new System.Windows.Forms.Button();
@@ -41,6 +40,7 @@ namespace Inner_Ring_Spaceship
             this.btn_listener_Desc = new System.Windows.Forms.Button();
             this.GetInfoSpaceShit = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // comboBox2
@@ -130,17 +130,23 @@ namespace Inner_Ring_Spaceship
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 17;
             // 
-
-            this.SuspendLayout();
+            // button1
             // 
-
+            this.button1.Location = new System.Drawing.Point(327, 302);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 18;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Spaceship
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
-
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.GetInfoSpaceShit);
             this.Controls.Add(this.btn_listener_Desc);
@@ -152,15 +158,9 @@ namespace Inner_Ring_Spaceship
             this.Controls.Add(this.comboBox2);
             this.ForeColor = System.Drawing.Color.PaleGreen;
             this.Name = "Spaceship";
-            this.Text = "SpaceShip";
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
-            this.ForeColor = System.Drawing.Color.PaleGreen;
-            this.Name = "Spaceship";
             this.Text = "Form1";
             this.ResumeLayout(false);
-
+            this.PerformLayout();
 
         }
 
@@ -176,6 +176,7 @@ namespace Inner_Ring_Spaceship
         private System.Windows.Forms.Button btn_listener_Desc;
         private System.Windows.Forms.Button GetInfoSpaceShit;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button button1;
     }
 }
 

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
@@ -47,13 +49,24 @@ namespace Inner_Ring_Spaceship
         string portSpaceshipSelected;
         string portSpaceship1Selected;
 
-
         //delivery data
         string deliveryCode;
 
         //control
         int posicion = 0;
 
+        private const int BufferSize = 1024;
+        public string Status = string.Empty;
+        public Thread T = null;
+        //innerencryption
+        string idInnerEncryption;
+        string codeInnerEncryption;
+        string idPlanetEncryption;
+        Dictionary<string, string> dictInnerEncryptionData = new Dictionary<string, string>();
+
+
+        //decompress
+        string documents;
 
         #region RSA
 
@@ -102,12 +115,28 @@ namespace Inner_Ring_Spaceship
             startCommunication();
         }
 
+        private void getInnerEnryptionData()
+        {
+            getCodeValidation();
+
+            DataSet InnerEncryptionData = Acc.PortarPerConsulta("select * from InnerEncryptionData where IdInnerEncryption = "+ idInnerEncryption + "  order by Word asc");
+            DataTable Data = InnerEncryptionData.Tables[0];
+            dictInnerEncryptionData = Data.AsEnumerable()
+              .ToDictionary<DataRow, string, string>(row => row.Field<string>(2),
+                                        row => row.Field<string>(3));
+        }
+        
+        
+
+
         private void getCodeValidation()
         {
             DataSet codeValidation;
-            codeValidation = Acc.PortarPerConsulta("select * from InnerEncryption where idPlanet=" + idPlanetSelected);
-            string codi = codeValidation.Tables[0].Rows[0][1].ToString();
-            validationCode = "VK" + codi;
+            codeValidation = Acc.PortarPerConsulta("select * from InnerEncryption where idPlanet=1");// + idPlanetSelected);
+            idInnerEncryption = codeValidation.Tables[0].Rows[0][0].ToString();
+            codeInnerEncryption = codeValidation.Tables[0].Rows[0][1].ToString();
+            idPlanetEncryption = codeValidation.Tables[0].Rows[0][2].ToString();
+            validationCode = "VK" + codeInnerEncryption;
         }
 
         private void getDeliveryCode()
@@ -129,11 +158,167 @@ namespace Inner_Ring_Spaceship
             {
                 sendMessage(validationCode);
                 posicion++;
+                getInnerEnryptionData();
+
+            }
+            else if (posicion == 2)
+            {
+              //  numbersToString();
             }
         }
 
-
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string saveFolder = Application.StartupPath + "\\fitxers";
+            string name = "PACS.zip";
+            unzipPacs(saveFolder,name);
+            
+            getInnerEnryptionData();
+            numbersToString();
+            //SendZip( );
+        }
         #endregion
+
+        static void Conc()
+        {
+            try
+            {
+                using (var outputStream = File.Create(Application.StartupPath + "\\fitxers\\PACTOTAL.txt"))
+                {
+                    string path = "";
+                    for (int i = 0; i < 3; i++)
+                    {
+                        path = Application.StartupPath + "\\fitxers\\PAC" + i + ".txt";
+                        using (var inputStream = File.OpenRead(path))
+                        {
+                            // Buffer size can be passed as the second argument.
+                            inputStream.CopyTo(outputStream);
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
+
+        /// 
+        /// 
+        /// 
+        /// 
+        /// 
+        /// 
+        /// 
+        /// 
+        /// 
+        /// 
+        /// 
+        /// 
+        /// 
+        /// 
+        /// 
+        /// 
+        /// 
+
+
+
+
+        private void SendZip(string M, string IPA, Int32 PortN)
+        {
+            const int BufferSize = 1024;
+            byte[] SendingBuffer = null;
+            TcpClient client = null;
+            NetworkStream netstream = null;
+            try
+            {
+                client = new TcpClient(IPA, PortN);
+                netstream = client.GetStream();
+                FileStream Fs = new FileStream(M, FileMode.Open, FileAccess.Read);
+                int NoOfPackets = Convert.ToInt32(Math.Ceiling(Convert.ToDouble(Fs.Length) / Convert.ToDouble(BufferSize)));
+                int TotalLength = (int)Fs.Length, CurrentPacketLength, counter = 0;
+                for (int i = 0; i < NoOfPackets; i++)
+                {
+                    if (TotalLength > BufferSize)
+                    {
+                        CurrentPacketLength = BufferSize;
+                        TotalLength = TotalLength - CurrentPacketLength;
+                    }
+                    else
+                        CurrentPacketLength = TotalLength;
+                    SendingBuffer = new byte[CurrentPacketLength];
+                    Fs.Read(SendingBuffer, 0, CurrentPacketLength);
+                    netstream.Write(SendingBuffer, 0, (int)SendingBuffer.Length);
+                }
+                Fs.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                netstream.Close();
+                client.Close();
+            }
+
+        }
+
+
+        private void numbersToString()
+        {
+            string name = "PAC";
+            string documents = "PACS";
+            
+
+            for (int i = 0; i < 3; i++)
+            {
+                bool final = false;
+                string codi = "";
+                string lletra = "";
+                string numeros = "";
+
+                StreamReader stream = new StreamReader(Application.StartupPath + "\\fitxers\\" + documents + i.ToString() + ".txt");
+                FileStream fs = new FileStream(Application.StartupPath + "\\fitxers\\" + name+i+".txt", FileMode.Create, FileAccess.Write);
+                StreamWriter wr = new StreamWriter(fs);
+                while (!final)
+                {
+
+                    codi = Convert.ToString((char)stream.Read());
+
+                    if (codi == "\r")
+                    {
+                        final = true;
+                    }
+                    else
+                    {
+                        try
+                        {
+                            numeros += codi;
+
+                            if (numeros.Length == 3)
+                            {
+                                lletra += dictInnerEncryptionData.FirstOrDefault(x => x.Value == numeros.ToString()).Key;
+                                numeros = "";
+                            }
+
+                        }
+                        catch(Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                    }
+                }
+
+                wr.WriteLine(lletra);
+                wr.Flush();
+                wr.Close();
+                fs.Close();
+            }
+            Conc();
+        }
+
 
         private void GetInfoSpaceShit_Click(object sender, EventArgs e)
         {
@@ -162,8 +347,12 @@ namespace Inner_Ring_Spaceship
         }
         private void createThreadToCompressed()
         {
-            hilo2 = new Thread(ActivarListenerCompressed);
-            hilo2.Start();
+           ThreadStart Ts = new ThreadStart(StartReceiving);
+            T = new Thread(Ts);
+            T.SetApartmentState(ApartmentState.STA);
+            T.Start();
+
+
         }
         #endregion
         #region Activar Listener Recibir Mensajes  
@@ -244,72 +433,109 @@ namespace Inner_Ring_Spaceship
         #endregion
 
         #region Activar Listener Recibir Archivos  
-        private void ActivarListenerCompressed()
+        public void StartReceiving()
         {
-            portCompressed = Int32.Parse(portSpaceship1Selected);
-
-            if (!listenerCompressedStart)
-            {
-                listenerCompressedStart = true;
-                if (InvokeRequired)
-                {
-                    lbx_Missatges.Invoke(new MethodInvoker(delegate () {
-                        lbx_Missatges.Items.Add("Listener Compressed using port " + portMessage.ToString());
-                    }
-                        )
-                    );
-                }
-                ActivateListenerCompressed();
-            }
-            else
-            {
-                if (InvokeRequired)
-                {
-                    lbx_Missatges.Invoke(new MethodInvoker(delegate () {
-                        lbx_Missatges.Items.Add("The listener Compress is activated");
-                    }
-                        )
-                    );
-                }
-            }
-
-            
+            ReceiveTCP(Int32.Parse(portSpaceship1Selected));
         }
 
-      
-
-        private void ActivateListenerCompressed()
+        public void ReceiveTCP(int portN)
         {
-            TcpClient client;
-            byte[] buffer = new byte[1024];
-            NetworkStream str;
+            TcpListener Listener = null;
+            string saveFolder = Application.StartupPath + "\\fitxers";
+            string name = "PACS.zip";
+            string create = "";
+            documents = name;
+            try
+            {
+                Listener = new TcpListener(IPAddress.Any, portN);
+                Listener.Start();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
 
-            ListenerRecieveCompressed = new TcpListener(IPAddress.Any, portCompressed);
-            ListenerRecieveCompressed.Start();
-            byte[] recive = new byte[256];
+            byte[] RecData = new byte[BufferSize];
+            int RecBytes;
+            if (InvokeRequired)
+            {
+                lbx_Missatges.Invoke(new MethodInvoker(delegate () {
+                    lbx_Missatges.Items.Add("Listener Compressed using port " + portN.ToString());
+                }
+                    )
+                );
+            }
+
             while (true)
             {
+                TcpClient client = null;
+                NetworkStream netstream = null;
+                Status = string.Empty;
                 try
                 {
-                    if (ListenerRecieveCompressed.Pending())
+                    string message = "Accept the Incoming File ";
+                    string caption = "Incoming Connection";
+                    MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                    DialogResult result;
+
+                    
+                    if (Listener.Pending())
                     {
-                        startCommunication();
-                        client = ListenerRecieveCompressed.AcceptTcpClient();
-                        str = client.GetStream();
-                        Int32 bytes = str.Read(recive, 0, recive.Length);
+                        client = Listener.AcceptTcpClient();
+                        netstream = client.GetStream();
+                        Status = "Connected to a client\n";
 
-                        MessageBox.Show("Compressed File Recived");
+                        result = MessageBox.Show(message, caption, buttons);
 
-                        str.Close();
-                        client.Close();
+                            CleanDir(saveFolder);
+                        create = saveFolder + "\\"+ name;
+                            
+                                int totalrecbytes = 0;
+                                FileStream Fs = new FileStream(create, FileMode.OpenOrCreate, FileAccess.Write);
+                                while ((RecBytes = netstream.Read(RecData, 0, RecData.Length)) > 0)
+                                {
+                                    Fs.Write(RecData, 0, RecBytes);
+                                    totalrecbytes += RecBytes;
+                                }
+                                Fs.Close();
+                            
+                            netstream.Close();
+                            client.Close();
+                        unzipPacs(saveFolder,name);
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    Console.WriteLine(ex.Message);
+            
                 }
             }
         }
+
+
+        private void unzipPacs(string carpeta,string name)
+        {
+            ZipFile.ExtractToDirectory(carpeta+"\\"+name , carpeta);
+        }
+
+
+        private void CleanDir(string dir)
+        {
+            DirectoryInfo directory = new DirectoryInfo(dir);
+            if (!Directory.Exists(dir))
+            {
+                Directory.CreateDirectory(dir);
+            }
+            foreach (FileInfo fi in directory.GetFiles())
+            {
+                fi.Delete();
+            }
+            foreach (DirectoryInfo di in directory.GetDirectories())
+            {
+                di.Delete(true);
+            }
+        }
+
         #endregion
 
         private void btn_listener_Desc_Click(object sender, EventArgs e)
@@ -331,6 +557,8 @@ namespace Inner_Ring_Spaceship
             rsa.FromXmlString(llave);
             llavePublica = rsa.ToXmlString(false);
         }
+
+        
 
         private string Encriptar(string texto)
         {
