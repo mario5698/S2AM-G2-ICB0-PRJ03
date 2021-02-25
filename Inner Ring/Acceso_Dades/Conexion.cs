@@ -45,17 +45,17 @@ namespace AccesoDades
             }
         }
 
-        public DataTable PortarTaula(string tabla)
+        public DataSet PortarTaula(string tabla)
         {
             dts = new DataSet();
             query = "select * from " + tabla;
             Conectar(query);
             adaptador.Fill(dts, tabla);
             conexion.Close();
-            return dts.Tables[tabla];
+            return dts;
         }
 
-        public void Actualitzar()
+        public void Actualitzar(DataSet dts)
         {
             conexion.Open();
             SqlDataAdapter adaptador;
