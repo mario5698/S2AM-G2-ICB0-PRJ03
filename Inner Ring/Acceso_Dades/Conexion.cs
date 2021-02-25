@@ -11,6 +11,7 @@ namespace AccesoDades
 {
     public abstract class Conexion
     {
+        protected string acceso = "Acceso";
         private string connectionString;
         private protected SqlConnection conexion;
         private protected SqlDataAdapter adaptador;
@@ -19,7 +20,11 @@ namespace AccesoDades
 
         public Conexion()
         {
+
             connectionString = ConfigurationManager.ConnectionStrings["Acceso"].ConnectionString;
+
+            connectionString = ConfigurationManager.ConnectionStrings[acceso].ConnectionString;
+
         }
 
         private protected void Conectar(string query)

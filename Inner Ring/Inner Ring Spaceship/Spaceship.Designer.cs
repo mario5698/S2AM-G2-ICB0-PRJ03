@@ -29,6 +29,7 @@ namespace Inner_Ring_Spaceship
         /// </summary>
         private void InitializeComponent()
         {
+
             this.components = new System.ComponentModel.Container();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.GetInfoPlanet = new System.Windows.Forms.Button();
@@ -129,12 +130,17 @@ namespace Inner_Ring_Spaceship
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 17;
             // 
+
+            this.SuspendLayout();
+            // 
+
             // Spaceship
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.GetInfoSpaceShit);
             this.Controls.Add(this.btn_listener_Desc);
@@ -149,6 +155,12 @@ namespace Inner_Ring_Spaceship
             this.Text = "SpaceShip";
             this.ResumeLayout(false);
             this.PerformLayout();
+
+            this.ForeColor = System.Drawing.Color.PaleGreen;
+            this.Name = "Spaceship";
+            this.Text = "Form1";
+            this.ResumeLayout(false);
+
 
         }
 

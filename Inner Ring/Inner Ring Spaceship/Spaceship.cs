@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Net;
 using System.Net.Sockets;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -53,6 +54,14 @@ namespace Inner_Ring_Spaceship
         //control
         int posicion = 0;
 
+
+        #region RSA
+
+        RSACryptoServiceProvider rsa;
+        byte[] datosEncriptados;
+        string llavePublica;
+
+        #endregion
 
         public Spaceship()
         {
@@ -313,5 +322,24 @@ namespace Inner_Ring_Spaceship
             listenerCompressedStart = false; 
             lbx_Missatges.Items.Clear();
         }
+
+        #region RSAFunciones
+
+        private void IniciarRSA(string llave)
+        {
+            rsa = new RSACryptoServiceProvider();
+            rsa.FromXmlString(llave);
+            llavePublica = rsa.ToXmlString(false);
+        }
+
+        private string Encriptar(string texto)
+        {
+            UnicodeEncoding ByteConverter = new UnicodeEncoding();
+            byte[] bytesTexto = ByteConverter.GetBytes(texto);
+            datosEncriptados = rsa.Encrypt(bytesTexto, true);
+            return ByteConverter.GetString(datosEncriptados);
+        }
+
+        #endregion
     }
 }

@@ -17,7 +17,11 @@ namespace AccesoDades
 
         public Acceso()
         {
+
             connectionString = ConfigurationManager.ConnectionStrings["Acceso"].ConnectionString;
+
+            connectionString = ConfigurationManager.ConnectionStrings[acceso].ConnectionString;
+
         }
 
         private protected void Conectar(string query = "select * from species")
@@ -34,6 +38,7 @@ namespace AccesoDades
             }
             catch (SqlException)
             {
+
             }
         }
 
