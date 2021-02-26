@@ -32,15 +32,13 @@ namespace Inner_Ring_Spaceship
             this.components = new System.ComponentModel.Container();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.GetInfoPlanet = new System.Windows.Forms.Button();
-            this.SendMessageFromTcp = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.TbxMessage = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.lbx_Missatges = new System.Windows.Forms.ListBox();
             this.btn_listener_Desc = new System.Windows.Forms.Button();
             this.GetInfoSpaceShit = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_SendPac = new System.Windows.Forms.Button();
+            this.lbl_GetFIleComplete = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // comboBox2
@@ -62,36 +60,10 @@ namespace Inner_Ring_Spaceship
             this.GetInfoPlanet.UseVisualStyleBackColor = false;
             this.GetInfoPlanet.Click += new System.EventHandler(this.GetInfoPlanet_Click);
             // 
-            // SendMessageFromTcp
-            // 
-            this.SendMessageFromTcp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.SendMessageFromTcp.Location = new System.Drawing.Point(258, 187);
-            this.SendMessageFromTcp.Name = "SendMessageFromTcp";
-            this.SendMessageFromTcp.Size = new System.Drawing.Size(142, 53);
-            this.SendMessageFromTcp.TabIndex = 3;
-            this.SendMessageFromTcp.Text = "Send message ";
-            this.SendMessageFromTcp.UseVisualStyleBackColor = false;
-            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            // 
-            // TbxMessage
-            // 
-            this.TbxMessage.Location = new System.Drawing.Point(132, 204);
-            this.TbxMessage.Name = "TbxMessage";
-            this.TbxMessage.Size = new System.Drawing.Size(100, 20);
-            this.TbxMessage.TabIndex = 7;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(55, 204);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(59, 13);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "MESSAGE";
             // 
             // lbx_Missatges
             // 
@@ -130,15 +102,24 @@ namespace Inner_Ring_Spaceship
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 17;
             // 
-            // button1
+            // btn_SendPac
             // 
-            this.button1.Location = new System.Drawing.Point(327, 302);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 18;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btn_SendPac.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.btn_SendPac.Location = new System.Drawing.Point(239, 144);
+            this.btn_SendPac.Name = "btn_SendPac";
+            this.btn_SendPac.Size = new System.Drawing.Size(142, 52);
+            this.btn_SendPac.TabIndex = 18;
+            this.btn_SendPac.Text = "Send File PAC";
+            this.btn_SendPac.UseVisualStyleBackColor = false;
+            this.btn_SendPac.Click += new System.EventHandler(this.btn_SendPac_Click);
+            // 
+            // lbl_GetFIleComplete
+            // 
+            this.lbl_GetFIleComplete.AutoSize = true;
+            this.lbl_GetFIleComplete.Location = new System.Drawing.Point(52, 144);
+            this.lbl_GetFIleComplete.Name = "lbl_GetFIleComplete";
+            this.lbl_GetFIleComplete.Size = new System.Drawing.Size(0, 13);
+            this.lbl_GetFIleComplete.TabIndex = 19;
             // 
             // Spaceship
             // 
@@ -146,14 +127,12 @@ namespace Inner_Ring_Spaceship
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.lbl_GetFIleComplete);
+            this.Controls.Add(this.btn_SendPac);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.GetInfoSpaceShit);
             this.Controls.Add(this.btn_listener_Desc);
             this.Controls.Add(this.lbx_Missatges);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.TbxMessage);
-            this.Controls.Add(this.SendMessageFromTcp);
             this.Controls.Add(this.GetInfoPlanet);
             this.Controls.Add(this.comboBox2);
             this.ForeColor = System.Drawing.Color.PaleGreen;
@@ -168,15 +147,13 @@ namespace Inner_Ring_Spaceship
 
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Button GetInfoPlanet;
-        private System.Windows.Forms.Button SendMessageFromTcp;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.TextBox TbxMessage;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ListBox lbx_Missatges;
         private System.Windows.Forms.Button btn_listener_Desc;
         private System.Windows.Forms.Button GetInfoSpaceShit;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_SendPac;
+        private System.Windows.Forms.Label lbl_GetFIleComplete;
     }
 }
 
