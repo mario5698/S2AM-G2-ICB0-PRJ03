@@ -16,7 +16,7 @@ namespace Inner_Ring_Spaceship
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Spaceship());
+            Application.Run(new Login());
         }
     }
 }

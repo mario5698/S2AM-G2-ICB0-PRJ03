@@ -46,7 +46,7 @@ namespace Inner_Ring_Spaceship
         string ipSpaceshipSelected;
         string portSpaceshipSelected;
         string portSpaceship1Selected;
-
+        string Spaceshiptype; 
         //delivery data
         string deliveryCode;
         bool exist=false; 
@@ -67,11 +67,45 @@ namespace Inner_Ring_Spaceship
         string documents;
 
         
-        public Spaceship()
+        public Spaceship(string spaceshipCode)
         {
             InitializeComponent();
             getAllPlanets();
+            getSpaceshipData(spaceshipCode);
         }
+        private void getSpaceshipData(string spaceshipCode)
+        {
+            try
+            {
+                DataSet infoSpaceship;
+                // infoSpaceship = Acc.PortarPerConsulta("select * from SpaceShips where CodeSpaceShip=" + "'" + label1.Text + "'");
+                infoSpaceship = Acc.PortarPerConsulta("select CodeSpaceShip, IPSpaceShip, PortSpaceShip, PortSpaceShip1, DescSpaceShipType from SpaceShips , SpaceShipTypes where CodeSpaceShip = '"+spaceshipCode+"'");
+                //    idSpaceshipSelected = infoSpaceship.Tables[0].Rows[0][0].ToString();
+                codeSpaceshipSelected = infoSpaceship.Tables[0].Rows[0][0].ToString();
+                ipSpaceshipSelected = infoSpaceship.Tables[0].Rows[0][1].ToString();
+                portSpaceshipSelected = infoSpaceship.Tables[0].Rows[0][2].ToString();
+                portSpaceship1Selected = infoSpaceship.Tables[0].Rows[0][3].ToString();
+                Spaceshiptype = infoSpaceship.Tables[0].Rows[0][4].ToString();
+
+                setValues(); 
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void setValues()
+        {
+            lbl_Code.Text = codeSpaceshipSelected;
+            lbl_Ip.Text = ipSpaceshipSelected;
+            lbl_Port.Text = portSpaceshipSelected;
+            lbl_Port1.Text = portSpaceship1Selected;
+            lbl_Type.Text = Spaceshiptype;
+        }
+
 
         private void sendMessage(string message = null, byte[] encrypted = null )
         {
@@ -304,23 +338,7 @@ namespace Inner_Ring_Spaceship
 
         private void GetInfoSpaceShit_Click(object sender, EventArgs e)
         {
-            try
-            {
-                DataSet infoSpaceship;
-                infoSpaceship = Acc.PortarPerConsulta("select * from SpaceShips where CodeSpaceShip=" + "'" + textBox1.Text + "'");
-                idSpaceshipSelected = infoSpaceship.Tables[0].Rows[0][0].ToString();
-                codeSpaceshipSelected = infoSpaceship.Tables[0].Rows[0][2].ToString();
-                ipSpaceshipSelected = infoSpaceship.Tables[0].Rows[0][3].ToString(); ;
-                portSpaceshipSelected = infoSpaceship.Tables[0].Rows[0][4].ToString(); ;
-                portSpaceship1Selected = infoSpaceship.Tables[0].Rows[0][5].ToString();
-                createThreadToListener();
-                createThreadToCompressed();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("GetInfoSpaceShit_Click");
-                MessageBox.Show(ex.Message);
-            }
+
         }
         #region Crear Hilos
         private void createThreadToListener()
@@ -378,40 +396,29 @@ namespace Inner_Ring_Spaceship
             NetworkStream str;
             byte[] recive = new byte[256];
 
-
             ListenerRecieveMessage = new TcpListener(IPAddress.Any, portMessage);
             ListenerRecieveMessage.Start();
 
             while (true)
-            {/*
-                try
-                {*/
-                    if (ListenerRecieveMessage.Pending())
-                    {
-                        client = ListenerRecieveMessage.AcceptTcpClient();
-                        str = client.GetStream();
-                        Int32 bytes = str.Read(recive, 0, recive.Length);
-                        mensaje = Encoding.UTF8.GetString(recive, 0, bytes);
-
-                        if (InvokeRequired)
-                        {
-                            lbx_Missatges.Invoke(new MethodInvoker(delegate ()
-                            {
-                                lbx_Missatges.Items.Add(mensaje);
-                            }
-                                )
-                            );
-                        }
-                        str.Close();
-                        client.Close();
-                        startCommunication();
-                    }
-               /* }
-                catch (Exception ex)
+            {
+                if (ListenerRecieveMessage.Pending())
                 {
-                    MessageBox.Show("ActivarListenerMessage");
-                    MessageBox.Show(ex.Message);
-                }*/
+                    client = ListenerRecieveMessage.AcceptTcpClient();
+                    str = client.GetStream();
+                    Int32 bytes = str.Read(recive, 0, recive.Length);
+                    mensaje = Encoding.UTF8.GetString(recive, 0, bytes);
+
+                    if (InvokeRequired)
+                    {
+                        lbx_Missatges.Invoke(new MethodInvoker(delegate ()
+                        {
+                            lbx_Missatges.Items.Add(mensaje);
+                        }));
+                    }
+                    str.Close();
+                    client.Close();
+                    startCommunication();
+                }
             }
         }
         #endregion
@@ -456,8 +463,7 @@ namespace Inner_Ring_Spaceship
                 NetworkStream netstream = null;
                 Status = string.Empty;
                 try
-                {
-                  
+                {          
                     if (Listener.Pending())
                     {
                         client = Listener.AcceptTcpClient();
@@ -481,12 +487,10 @@ namespace Inner_Ring_Spaceship
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("ReceiveTCP");
                     Console.WriteLine(ex.Message);
                 }
             }
         }
-
 
         private void unzipPacs()
         {
@@ -511,9 +515,7 @@ namespace Inner_Ring_Spaceship
                 di.Delete(true);
             }
         }
-
         #endregion
-
 
         private void btn_SendPac_Click(object sender, EventArgs e)
         {
@@ -525,9 +527,22 @@ namespace Inner_Ring_Spaceship
             else
             {
                 lbl_GetFIleComplete.Text = "The document has not been created yet";
-
             }
+        }
+       
+        private void btn_listener_Conect_Click(object sender, EventArgs e)
+        {
+            try
+            {
 
+                createThreadToListener();
+                createThreadToCompressed();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btn_listener_Desc_Click(object sender, EventArgs e)
@@ -540,6 +555,5 @@ namespace Inner_Ring_Spaceship
             listenerCompressedStart = false;
             lbx_Missatges.Items.Clear();
         }
-
     }
 }
