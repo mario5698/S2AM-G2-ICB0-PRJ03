@@ -21,34 +21,34 @@ namespace Inner_Ring
 {
     public partial class Planet : Form
     {
+
         public Planet()
         {
             InitializeComponent();
             ObtenerPlanetas();
-
         }
-
+          
         #region RSA
 
         public byte[] datosEncriptados;
         CspParameters parametros;
         RSACryptoServiceProvider rsa;
-        UnicodeEncoding convertidor;
+        UnicodeEncoding ByteConverter = new UnicodeEncoding();
         string llavePublica;
 
+        private const int BufferSize = 1024;
+        public string Status = string.Empty;
+        public Thread T = null;
         public byte[] encrypted;
-        Thread sendzip;
         Thread fitxers;
         Thread comprimit;
         Thread hilotcp;
         TcpListener Listener;
         TcpClient client;
         byte[] buffer;
-        byte[] datos;
         NetworkStream ns;
-        string publicKey;
+        Byte[] dades;
         string code;
-        string path;
         string key = "", num_format = "";
         Dictionary<string, string> dic = new Dictionary<string, string>();
         RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider();
@@ -69,6 +69,8 @@ namespace Inner_Ring
         DataSet planets;
         Dictionary<int, string> planetsDictionary = new Dictionary<int, string>();
         Acceso Acc = new Acceso();
+        Encrypt cry = new Encrypt();
+        
         private static Random random = new Random();
 
         #endregion
@@ -114,6 +116,92 @@ namespace Inner_Ring
             }
         }
 
+        public void ReceiveTCP(int portN)
+        {
+            TcpListener Listener = null;
+            string recPath = Application.StartupPath + "\\fitxers\\forCompare";
+            string saveFolder = recPath + "\\";
+            string name = "lletresTotalsRecived.txt";
+            string create = "";
+            try
+            {
+                Listener = new TcpListener(IPAddress.Any, portN);
+                Listener.Start();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+            byte[] RecData = new byte[BufferSize];
+            int RecBytes;
+
+            while (true)
+            {
+                TcpClient client = null;
+                NetworkStream netstream = null;
+                Status = string.Empty;
+                try
+                {
+                    string message = "Accept the Incoming File ";
+                    string caption = "Incoming Connection";
+                    MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                    DialogResult result;
+
+
+                    if (Listener.Pending())
+                    {
+                        client = Listener.AcceptTcpClient();
+                        netstream = client.GetStream();
+                        Status = "Connected to a client\n";
+
+                        result = MessageBox.Show(message, caption, buttons);
+                        create = saveFolder + "\\" + name;
+
+                        int totalrecbytes = 0;
+                        FileStream Fs = new FileStream(create, FileMode.OpenOrCreate, FileAccess.Write);
+                        while ((RecBytes = netstream.Read(RecData, 0, RecData.Length)) > 0)
+                        {
+                            Fs.Write(RecData, 0, RecBytes);
+                            totalrecbytes += RecBytes;
+                        }
+                        Fs.Close();
+                        netstream.Close();
+                        client.Close();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+
+                }
+            }
+        }
+
+        private bool CompararHash()
+        {
+            string comPath = Application.StartupPath + "\\fitxers\\forCompare";
+            DirectoryInfo CompDir = new DirectoryInfo(comPath);
+            byte[] sal = cry.Sal();
+            List<byte[]> files = new List<byte[]>();
+            try
+            {
+                if (Directory.GetFiles(comPath, "*", SearchOption.AllDirectories).Length != 0)
+                {
+                    foreach (FileInfo file in CompDir.GetFiles())
+                    {
+                        files.Add(cry.Hash(File.ReadAllText(comPath + "\\" + file.Name), sal));
+                    }
+                    return cry.HashesIguales(files[0], files[1]);
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            return false;
+        }
+
         private void CleanDir(string dir)
         {
             DirectoryInfo directory = new DirectoryInfo(dir);
@@ -131,16 +219,18 @@ namespace Inner_Ring
             }
         }
 
-
         private void GenerarFitxers()
         {
             CleanDir(Application.StartupPath + "\\fitxers");
             CleanDir(Application.StartupPath + "\\fitxers\\PACS");
+            CleanDir(Application.StartupPath + "\\fitxers\\Lletres");
+
             Parallel.For(0, 3, i =>
             {
                 EscriureLletres(i);
                 EscriureCodi(i);
             });
+            Conc();
         }
 
         private string LLetraRandomKey()
@@ -153,11 +243,11 @@ namespace Inner_Ring
             return dic.ElementAt(pos).Key;
         }
 
-
         private void EscriureLletres(int num)
         {
-            FileStream fs = new FileStream(Application.StartupPath + "\\fitxers\\lletres" + num + ".txt", FileMode.Create, FileAccess.Write);
+            FileStream fs = new FileStream(Application.StartupPath + "\\fitxers\\Lletres\\lletres" + num + ".txt", FileMode.Create, FileAccess.Write);
             StreamWriter wr = new StreamWriter(fs);
+
             string lletra = "";
             for (int i = 0; i < 100000; i++)
             {
@@ -169,10 +259,38 @@ namespace Inner_Ring
             fs.Close();
         }
 
+
+        private void Conc()
+        {
+            try
+            {
+                string recPath = Application.StartupPath + "\\fitxers\\forCompare";
+                CleanDir(recPath);
+                using (var outputStream = File.Create(recPath + "\\lletresTotal.txt"))
+                {
+                    string path = "";
+
+                    for (int i = 0; i < 3; i++)
+                    {
+                        path = Application.StartupPath + "\\fitxers\\Lletres\\lletres" + i + ".txt";
+                        using (var inputStream = File.OpenRead(path))
+                        {
+                            // Buffer size can be passed as the second argument.
+                            inputStream.CopyTo(outputStream);
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+        }
+
         private void EscriureCodi(int num)
         {
             FileStream fs = new FileStream(Application.StartupPath + "\\fitxers\\PACS\\PACS" + num + ".txt", FileMode.Append, FileAccess.Write, FileShare.Read);
-            FileStream frs = new FileStream(Application.StartupPath + "\\fitxers\\lletres" + num + ".txt", FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+            FileStream frs = new FileStream(Application.StartupPath + "\\fitxers\\Lletres\\lletres" + num + ".txt", FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
 
             StreamWriter wr = new StreamWriter(fs);
             StreamReader rd = new StreamReader(frs);
@@ -184,6 +302,7 @@ namespace Inner_Ring
                 if (lletra == "\r")
                 {
                     fi = true;
+                    wr.WriteLine();
                 }
                 else
                 {
@@ -241,6 +360,7 @@ namespace Inner_Ring
 
         private void button1_Click(object sender, EventArgs e)
         {
+            listBox1.Items.Clear();
             GenerarDic();
             code = "";
             for (int i = 0; i < 12; i++)
@@ -261,25 +381,27 @@ namespace Inner_Ring
                 while (conectado)
                 {
                     if (Listener.Pending())
-                    { 
+                    {
                         client = Listener.AcceptTcpClient();
                         string[] ip = client.Client.RemoteEndPoint.ToString().Split(':');
                         ns = client.GetStream();
-                        buffer = new byte[1024];
+                        buffer = new byte[128];
                         int bytes = ns.Read(buffer, 0, buffer.Length);
-                        lbx_Missatges.Items.Add(codeNau + " ha enviat:");
-                        lbx_Missatges.Items.Add(" ");
-                        rebut = Encoding.ASCII.GetString(buffer, 0, bytes);
-                        lbx_Missatges.Items.Add(rebut);
-                        lbx_Missatges.Items.Add("---------------------------------------------------");
+                        if (status < 1)
+                        {
+                            rebut = Encoding.ASCII.GetString(buffer, 0, bytes);
+                        } else
+                        {
+                            AddLb("+ ENC --> " + Encoding.ASCII.GetString(buffer, 0, bytes));
+                            rebut = ByteConverter.GetString(Desencriptar(buffer));
+                        }
                         AnaliseMess(rebut);
-
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                MessageBox.Show("Error del servidor");
+                MessageBox.Show(e.Message);
             }
         }
 
@@ -287,6 +409,13 @@ namespace Inner_Ring
         {
             hilotcp = new Thread(new ThreadStart(Listen));
             hilotcp.Start();
+        }
+
+        private void AddLb(string rebut)
+        {
+            lbx_Missatges.Items.Add(" ");
+            lbx_Missatges.Items.Add(rebut);
+
         }
 
         private void AnaliseMess(string text)
@@ -300,6 +429,8 @@ namespace Inner_Ring
                     try
                     {
                         codeNau = text.Substring(2, 12);
+                        lbx_Missatges.Items.Add("Nau:" + codeNau);
+                        AddLb("+ " + text);
                         string codeDeliv = text.Substring(14, 12);
                         string idspaceship = Acc.PortarPerConsulta("Select * from DeliveryData where codeDelivery = '" + codeDeliv + "'").Tables[0].Rows[0]["idspaceship"].ToString();
                         DataSet dtsp = Acc.PortarPerConsulta("Select * from Spaceships where idspaceship =" + idspaceship);
@@ -314,54 +445,63 @@ namespace Inner_Ring
                             ipSpaceShip = dtsp.Tables[0].Rows[0]["ipspaceship"].ToString();
                             message = "VR" + codeNau + "VP";
                             SendMessage(message, ipSpaceShip, portSpaceShip);
+                            AddLb("- " + message);
                         }
                         else
                         {
                             message = "VR" + codeNau + "AD";
                             SendMessage(message, ipSpaceShip, portSpaceShip);
+                            AddLb("- " + message);
+
                         }
                     }
                     catch (Exception)
                     {
                         SendMessage("ERRORES AJENOS AL CÓDIGO", ipSpaceShip, portSpaceShip);
+                        AddLb("- ERRORES AJENOS AL CÓDIGO");
                     }
                 }
                 else
                 {
                     SendMessage("ORDEN DE ENTRADA INCORRECTA", ipSpaceShip, portSpaceShip);
+                    AddLb("- ORDEN DE ENTRADA INCORRECTA");
                 }
-
             }
-            else if (first == "VK")
+            else
             {
+                AddLb("+ DEC --> " + text);
                 int pos = 1;
                 if (pos == status)
                 {
                     try
                     {
-                        string validationCode = text.Substring(2, 12);
+                        string validationCode = text;
                         string valCodeBBDD = Acc.PortarPerConsulta("select * from innerencryption where idplanet = " + idpla).Tables[0].Rows[0][1].ToString();
                         string message;
                         if (validationCode == valCodeBBDD)
                         {
                             message = "VR" + codeNau + "VP";
                             SendMessage(message, ipSpaceShip, portSpaceShip);
+                            AddLb("-" + message);
                             SendZip(Application.StartupPath + "\\fitxers\\PACS.zip", ipSpaceShip, int.Parse(port1SpaceShip));
                         }
                         else
                         {
                             message = "VR" + codeNau + "AD";
                             SendMessage(message, ipSpaceShip, portSpaceShip);
+                            AddLb("-" + message);
                         }
                     }
                     catch (Exception)
                     {
                         SendMessage("ERRORES AJENOS AL CÓDIGO", ipSpaceShip, portSpaceShip);
+                        AddLb("- ERRORES AJENOS AL CÓDIGO");
                     }
                 }
                 else
                 {
                     SendMessage("ORDEN DE ENTRADA INCORRECTA", ipSpaceShip, portSpaceShip);
+                    AddLb("- ORDEN DE ENTRADA INCORRECTA");
                 }
             }
         }
@@ -433,9 +573,13 @@ namespace Inner_Ring
                 Acc.Executa("delete from innerencryption where idplanet = " + idpla);
             }
             catch (Exception)
-            {}
+            { }
         }
 
+        private void button6_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(CompararHash().ToString());
+        }
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -449,8 +593,33 @@ namespace Inner_Ring
             idpla = Acc.PortarPerConsulta("select * from planets where idplanet = '" + comboBox1.SelectedValue + "'").Tables[0].Rows[0][0].ToString();
             planetSelected = planets.Tables[0].Select("IdPlanet=" + comboBox1.SelectedValue);
             portPlanetSelected = planetSelected[0][11].ToString();
-            HiloTCP();
             conectado = true;
+            HiloTCP();
+            ThreadStart Ts = new ThreadStart(StartReceiving);
+            T = new Thread(Ts);
+            T.SetApartmentState(ApartmentState.STA);
+            T.Start();
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            IniciarRSA();
+        }
+        byte[] encryp;
+        private void button9_Click(object sender, EventArgs e)
+        {
+            textBox3.Text = ByteConverter.GetString(Desencriptar(encryp));
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            encryp = Encriptar(textBox1.Text);
+            textBox2.Text = ByteConverter.GetString(Encriptar(textBox1.Text));
+        }
+
+        public void StartReceiving()
+        {
+            ReceiveTCP(int.Parse(planetSelected[0][12].ToString()));
         }
 
         private void SendMessage(string mes, string ip, string port)
@@ -492,12 +661,13 @@ namespace Inner_Ring
                         TotalLength = TotalLength - CurrentPacketLength;
                     }
                     else
-                    CurrentPacketLength = TotalLength;
+                        CurrentPacketLength = TotalLength;
                     SendingBuffer = new byte[CurrentPacketLength];
                     Fs.Read(SendingBuffer, 0, CurrentPacketLength);
                     netstream.Write(SendingBuffer, 0, (int)SendingBuffer.Length);
-                    Fs.Close();
                 }
+                Fs.Close();
+
             }
             catch (Exception ex)
             {
@@ -517,7 +687,7 @@ namespace Inner_Ring
             portPlanetSelected = planetSelected[0][11].ToString();
             try
             {
-                datos = Encoding.ASCII.GetBytes(txb_message.Text);
+                dades = Encoding.ASCII.GetBytes(txb_message.Text);
                 client = new TcpClient(txb_ip.Text, Int32.Parse(txb_portS.Text));
                 ns = client.GetStream();
                 byte[] nouBuffer = Encoding.ASCII.GetBytes(txb_message.Text);
@@ -535,27 +705,45 @@ namespace Inner_Ring
         {
         }
 
+        #endregion
+
+        #region RSAFunciones
 
         private void IniciarRSA()
         {
+            planetSelected = planets.Tables[0].Select("IdPlanet=" + comboBox1.SelectedValue);
+            portPlanetSelected = planetSelected[0][11].ToString();
             parametros = new CspParameters();
-            parametros.KeyContainerName = txtRSA.Text;
+            parametros.KeyContainerName = Acc.PortarPerConsulta("select * from planets where idplanet = " + comboBox1.SelectedValue).Tables[0].Rows[0]["codeplanet"].ToString();
             rsa = new RSACryptoServiceProvider(parametros);
-            convertidor = new UnicodeEncoding();
+
             llavePublica = rsa.ToXmlString(false);
+            Acc.Executa("delete from planetkeys where idplanet = " + comboBox1.SelectedValue);
+            DataSet pKey = Acc.PortarTaula("Planetkeys");
+            DataRow row;
+            row = pKey.Tables[0].NewRow();
+            row["idPlanet"] = comboBox1.SelectedValue;
+            row["xmlkey"] = llavePublica;
+            pKey.Tables[0].Rows.Add(row);
+            Acc.Actualitzar(pKey);
         }
 
         private byte[] Encriptar(string texto)
         {
-            byte[] bytesTexto = convertidor.GetBytes(texto);
-            return rsa.Encrypt(bytesTexto, true);
+            RSACryptoServiceProvider rsaEnc = new RSACryptoServiceProvider();
+            string xmlkey = Acc.PortarPerConsulta("select * from planetkeys where idplanet = " + comboBox1.SelectedValue).Tables[0].Rows[0]["xmlkey"].ToString();
+            rsaEnc.FromXmlString(xmlkey);
+            byte[] bytesTexto = ByteConverter.GetBytes(texto);
+            return rsaEnc.Encrypt(bytesTexto, false);
         }
 
         private byte[] Desencriptar(byte[] texto)
         {
-            return rsa.Decrypt(texto, true);
+            CspParameters csp = new CspParameters();
+            csp.KeyContainerName = Acc.PortarPerConsulta("select * from planets where idplanet = " + comboBox1.SelectedValue).Tables[0].Rows[0]["codeplanet"].ToString();
+            RSACryptoServiceProvider rsade = new RSACryptoServiceProvider(csp);
+            return rsade.Decrypt(texto, false);
         }
-
         #endregion
 
     }
