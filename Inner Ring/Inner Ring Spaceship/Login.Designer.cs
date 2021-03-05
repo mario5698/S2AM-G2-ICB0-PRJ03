@@ -40,7 +40,8 @@ namespace Inner_Ring_Spaceship
             this.txt_CodeSpaceship.Name = "txt_CodeSpaceship";
             this.txt_CodeSpaceship.Size = new System.Drawing.Size(100, 20);
             this.txt_CodeSpaceship.TabIndex = 0;
-            this.txt_CodeSpaceship.Text = "Your Code Spaceship Here";
+            this.txt_CodeSpaceship.Text = "Spaceship Code";
+            this.txt_CodeSpaceship.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_CodeSpaceship_KeyDown);
             // 
             // btn_Login
             // 

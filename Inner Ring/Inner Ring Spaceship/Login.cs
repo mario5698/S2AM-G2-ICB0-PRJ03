@@ -29,5 +29,13 @@ namespace Inner_Ring_Spaceship
         {
             this.Close();
         }
+
+        private void txt_CodeSpaceship_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+             //   buttonTest_Click(this, new EventArgs());
+            }
+        }
     }
 }

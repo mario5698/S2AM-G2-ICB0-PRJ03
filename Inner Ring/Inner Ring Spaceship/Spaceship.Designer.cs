@@ -47,19 +47,22 @@ namespace Inner_Ring_Spaceship
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // comboBox2
             // 
+            this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F);
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Location = new System.Drawing.Point(358, 157);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
+            this.comboBox2.Size = new System.Drawing.Size(121, 39);
             this.comboBox2.TabIndex = 1;
             // 
             // GetInfoPlanet
             // 
             this.GetInfoPlanet.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.GetInfoPlanet.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F);
             this.GetInfoPlanet.Location = new System.Drawing.Point(506, 144);
             this.GetInfoPlanet.Name = "GetInfoPlanet";
             this.GetInfoPlanet.Size = new System.Drawing.Size(142, 45);
@@ -110,7 +113,8 @@ namespace Inner_Ring_Spaceship
             // btn_SendPac
             // 
             this.btn_SendPac.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.btn_SendPac.Location = new System.Drawing.Point(506, 229);
+            this.btn_SendPac.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F);
+            this.btn_SendPac.Location = new System.Drawing.Point(517, 245);
             this.btn_SendPac.Name = "btn_SendPac";
             this.btn_SendPac.Size = new System.Drawing.Size(142, 52);
             this.btn_SendPac.TabIndex = 18;
@@ -216,12 +220,22 @@ namespace Inner_Ring_Spaceship
             this.label4.TabIndex = 30;
             this.label4.Text = "Type Spaceship";
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(323, 261);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(35, 13);
+            this.label5.TabIndex = 32;
+            this.label5.Text = "label5";
+            // 
             // Spaceship
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -267,6 +281,7 @@ namespace Inner_Ring_Spaceship
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
     }
 }
 

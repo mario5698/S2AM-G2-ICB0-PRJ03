@@ -72,6 +72,7 @@ namespace Inner_Ring_Spaceship
             InitializeComponent();
             getAllPlanets();
             getSpaceshipData(spaceshipCode);
+
         }
         private void getSpaceshipData(string spaceshipCode)
         {
@@ -120,7 +121,6 @@ namespace Inner_Ring_Spaceship
             else if (encrypted != null)
             {
                 frase = encrypted;
-//                MessageBox.Show(frase.Count().ToString());
             }
             NetStream.Write(frase, 0, frase.Length);
         }
@@ -186,14 +186,19 @@ namespace Inner_Ring_Spaceship
             if (posicion == 0)
             {
                 posicion++;
-                sendMessage( message: "ER" + codeSpaceshipSelected + deliveryCode);
-               
+                string messageToSend = "ER" + codeSpaceshipSelected + deliveryCode;
+                sendMessage( message: messageToSend);
+                lbx_Missatges.Items.Add("+ " + messageToSend);
+                lbx_Missatges.Items.Add("");
+
+
             }
             else if (posicion == 1)
             {
                 posicion++;
-//                sendMessage(validationCode);
-               sendMessage(encrypted: Encriptar(codeInnerEncryption)) ;
+                sendMessage(encrypted: Encriptar(codeInnerEncryption)) ;
+                lbx_Missatges.Items.Add("+ Encripted Message Sent");
+
             }
             else if (posicion == 2)
             {
@@ -201,6 +206,7 @@ namespace Inner_Ring_Spaceship
                 getInnerEnryptionData();
                 unzipPacs();
                 numbersToString();
+                label5.Text = "The Files is Ready to Send ";
             }
         }
 
@@ -412,7 +418,7 @@ namespace Inner_Ring_Spaceship
                     {
                         lbx_Missatges.Invoke(new MethodInvoker(delegate ()
                         {
-                            lbx_Missatges.Items.Add(mensaje);
+                            lbx_Missatges.Items.Add("- "+ mensaje);
                         }));
                     }
                     str.Close();
@@ -497,6 +503,7 @@ namespace Inner_Ring_Spaceship
             string carpeta = Application.StartupPath + "\\fitxers";
             string name = "PACS.zip";
             ZipFile.ExtractToDirectory(carpeta + "\\" + name, carpeta);
+
         }
 
         private void CleanDir(string dir)

@@ -73,6 +73,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Spaceship.resx">
       <DependentUpon>Spaceship.cs</DependentUpon>
@@ -95,6 +96,9 @@
       <Project>{7ef7eaf2-d966-4f20-a306-a76267b5a31f}</Project>
       <Name>AccesoDades</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Eclipse-3.3s-200px %281%29.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
