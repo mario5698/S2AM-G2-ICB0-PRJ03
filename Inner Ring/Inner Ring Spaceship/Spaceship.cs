@@ -94,6 +94,7 @@ namespace Inner_Ring_Spaceship
             }
             catch (Exception ex)
             {
+                MessageBox.Show("getSpaceshipData");
                 MessageBox.Show(ex.Message);
             }
         }
@@ -190,8 +191,6 @@ namespace Inner_Ring_Spaceship
                 sendMessage( message: messageToSend);
                 lbx_Missatges.Items.Add("+ " + messageToSend);
                 lbx_Missatges.Items.Add("");
-
-
             }
             else if (posicion == 1)
             {
@@ -437,8 +436,9 @@ namespace Inner_Ring_Spaceship
 
         public void ReceiveTCP(int portN)
         {
+            DateTime thisDay = DateTime.Today;
             TcpListener Listener = null;
-            string saveFolder = Application.StartupPath + "\\fitxers";
+            string saveFolder = Application.StartupPath + "\\fitxers\\FitxerPacs\\Pacs"+thisDay.ToString("d")+"-"+idPlanetSelected;
             string name = "PACS.zip";
             string create = "";
             documents = name;
@@ -472,9 +472,10 @@ namespace Inner_Ring_Spaceship
                 {          
                     if (Listener.Pending())
                     {
+                        CleanDir(saveFolder);
                         client = Listener.AcceptTcpClient();
                         netstream = client.GetStream();
-                        CleanDir(saveFolder);
+                        
 
                         create = saveFolder + "\\" + name;
 
@@ -493,6 +494,7 @@ namespace Inner_Ring_Spaceship
                 }
                 catch (Exception ex)
                 {
+                    MessageBox.Show("ReceiveTCP");
                     Console.WriteLine(ex.Message);
                 }
             }
@@ -547,7 +549,7 @@ namespace Inner_Ring_Spaceship
             }
             catch (Exception ex)
             {
-
+                MessageBox.Show("listener button connect ");
                 MessageBox.Show(ex.Message);
             }
         }

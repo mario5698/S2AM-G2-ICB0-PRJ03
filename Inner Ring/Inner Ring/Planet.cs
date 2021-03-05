@@ -128,7 +128,7 @@ namespace Inner_Ring
                 Listener = new TcpListener(IPAddress.Any, portN);
                 Listener.Start();
             }
-            catch (Exception ex)
+            catch  (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
@@ -172,6 +172,7 @@ namespace Inner_Ring
                 }
                 catch (Exception ex)
                 {
+                    MessageBox.Show("ReceiveTCP planet");
                     MessageBox.Show(ex.Message);
 
                 }
@@ -197,6 +198,7 @@ namespace Inner_Ring
             }
             catch (Exception e)
             {
+                MessageBox.Show("CompararHash");
                 MessageBox.Show(e.Message);
             }
             return false;
@@ -283,6 +285,7 @@ namespace Inner_Ring
             }
             catch (Exception e)
             {
+                MessageBox.Show("Conc planet");
                 MessageBox.Show(e.Message);
             }
         }
@@ -313,6 +316,7 @@ namespace Inner_Ring
                     }
                     catch (Exception)
                     {
+                        MessageBox.Show("EscriureCodi");
                     }
                 }
             }
@@ -331,7 +335,9 @@ namespace Inner_Ring
                 ZipFile.CreateFromDirectory(Application.StartupPath + "\\fitxers\\PACS", Application.StartupPath + "\\fitxers\\PACS.zip");
             }
             catch (Exception)
-            { }
+            {
+                MessageBox.Show("ComprimirFitxers");
+            }
         }
 
         private string Agregar_Num()
@@ -401,6 +407,7 @@ namespace Inner_Ring
             }
             catch (Exception e)
             {
+                MessageBox.Show("Listener planet");
                 MessageBox.Show(e.Message);
             }
         }
