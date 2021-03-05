@@ -646,6 +646,7 @@ namespace Inner_Ring
             byte[] SendingBuffer = null;
             TcpClient client = null;
             NetworkStream netstream = null;
+            
             try
             {
                 client = new TcpClient(IPA, PortN);
