@@ -71,7 +71,6 @@ namespace Inner_Ring_Spaceship
             InitializeComponent();
             getAllPlanets();
             getSpaceshipData(spaceshipCode);
-            getInnerEnryptionData();
             CleanDir(saveFolder);
 
         }
@@ -80,7 +79,7 @@ namespace Inner_Ring_Spaceship
             try
             {
                 DataSet infoSpaceship;
-                infoSpaceship = Acc.PortarPerConsulta("select CodeSpaceShip, IPSpaceShip, PortSpaceShip, PortSpaceShip1, DescSpaceShipType from SpaceShips , SpaceShipTypes where CodeSpaceShip = '" + spaceshipCode + "'");
+                infoSpaceship = Acc.PortarPerConsulta("select CodeSpaceShip, IPSpaceShip, PortSpaceShip, PortSpaceShip1, DescSpaceShipType from SpaceShips, SpaceShipTypes where CodeSpaceShip = '"+spaceshipCode+"'");
                 codeSpaceshipSelected = infoSpaceship.Tables[0].Rows[0][0].ToString();
                 ipSpaceshipSelected = infoSpaceship.Tables[0].Rows[0][1].ToString();
                 portSpaceshipSelected = infoSpaceship.Tables[0].Rows[0][2].ToString();
@@ -144,16 +143,14 @@ namespace Inner_Ring_Spaceship
             ipPlanetSelected = planetSelected[0][10].ToString();
             portPlanetSelected = planetSelected[0][11].ToString();
             port1PlanetSelected = planetSelected[0][12].ToString();
-            getCodeValidation();
             getDeliveryCode();
             startCommunication();
         }
 
         private void getInnerEnryptionData()
         {
-            getCodeValidation();
 
-            DataSet InnerEncryptionData = Acc.PortarPerConsulta("select * from InnerEncryptionData where IdInnerEncryption = " + idInnerEncryption + "  order by Word asc");
+            DataSet InnerEncryptionData = Acc.PortarPerConsulta("select * from InnerEncryptionData where idInnerEncryption = " + idInnerEncryption + "  order by Word asc");
             DataTable Data = InnerEncryptionData.Tables[0];
             dictInnerEncryptionData = Data.AsEnumerable()
               .ToDictionary<DataRow, string, string>(row => row.Field<string>(2),
@@ -163,7 +160,7 @@ namespace Inner_Ring_Spaceship
         private void getCodeValidation()
         {
             DataSet codeValidation;
-            codeValidation = Acc.PortarPerConsulta("select * from InnerEncryption where = " + "'" + idPlanetSelected + "'");
+            codeValidation = Acc.PortarPerConsulta("select * from InnerEncryption where idPlanet = "+idPlanetSelected);
             idInnerEncryption = codeValidation.Tables[0].Rows[0][0].ToString();
             codeInnerEncryption = codeValidation.Tables[0].Rows[0][1].ToString();
 
@@ -190,6 +187,7 @@ namespace Inner_Ring_Spaceship
             else if (posicion == 1)
             {
                 posicion++;
+                getCodeValidation();
                 sendMessage(encrypted: Encriptar(codeInnerEncryption));
                 if (InvokeRequired)
                 {
@@ -200,6 +198,7 @@ namespace Inner_Ring_Spaceship
                         }
                             ));
                 }
+                
             }
             else if (posicion == 2)
             {
@@ -516,7 +515,7 @@ namespace Inner_Ring_Spaceship
 
         private void CleanDir(string dir)
         {
-            try
+           try
             {
                 DirectoryInfo directory = new DirectoryInfo(dir);
                 if (!Directory.Exists(dir))
