@@ -47,7 +47,6 @@ namespace Inner_Ring_Spaceship
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // comboBox2
@@ -125,7 +124,7 @@ namespace Inner_Ring_Spaceship
             // lbl_GetFIleComplete
             // 
             this.lbl_GetFIleComplete.AutoSize = true;
-            this.lbl_GetFIleComplete.Location = new System.Drawing.Point(52, 144);
+            this.lbl_GetFIleComplete.Location = new System.Drawing.Point(228, 262);
             this.lbl_GetFIleComplete.Name = "lbl_GetFIleComplete";
             this.lbl_GetFIleComplete.Size = new System.Drawing.Size(0, 13);
             this.lbl_GetFIleComplete.TabIndex = 19;
@@ -220,22 +219,12 @@ namespace Inner_Ring_Spaceship
             this.label4.TabIndex = 30;
             this.label4.Text = "Type Spaceship";
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(323, 261);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 13);
-            this.label5.TabIndex = 32;
-            this.label5.Text = "label5";
-            // 
             // Spaceship
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.ClientSize = new System.Drawing.Size(1904, 1041);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -281,7 +270,6 @@ namespace Inner_Ring_Spaceship
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
     }
 }
 

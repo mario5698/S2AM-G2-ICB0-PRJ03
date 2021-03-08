@@ -12,19 +12,19 @@ using System.Threading;
 using System.Windows.Forms;
 using AccesoDades;
 
-
-
 namespace Inner_Ring_Spaceship
 {
     public partial class Spaceship : Form
     {
+        string saveFolder = Application.StartupPath + "\\fitxers";
+
         DataSet planets;
         Acceso Acc = new Acceso();
         //info planet
         string ipPlanetSelected;
         string portPlanetSelected;
         string idPlanetSelected;
-        string validationCode;
+        // string validationCode;
         string port1PlanetSelected;
         //Send message
         TcpClient Client = null;
@@ -33,45 +33,46 @@ namespace Inner_Ring_Spaceship
         //listener
         Thread hilo1, hilo2;
         int portMessage;
-        int portCompressed;
+        //int portCompressed;
         TcpListener ListenerRecieveMessage;
         TcpListener ListenerRecieveCompressed;
         bool listenerRecieveStart = false;
-        bool listenerCompressedStart = false;
+        //   bool listenerCompressedStart = false;
 
         //info spaceship
         DataSet spaceShip;
-        string idSpaceshipSelected;
+        // string idSpaceshipSelected;
         string codeSpaceshipSelected;
         string ipSpaceshipSelected;
         string portSpaceshipSelected;
         string portSpaceship1Selected;
-        string Spaceshiptype; 
+        string Spaceshiptype;
+
         //delivery data
         string deliveryCode;
-        bool exist=false; 
+        // bool exist=false; 
         //control
         int posicion = 0;
-
         private const int BufferSize = 1024;
         public string Status = string.Empty;
         public Thread T = null;
         //innerencryption
         string idInnerEncryption;
         string codeInnerEncryption;
-        string idPlanetEncryption;
         Dictionary<string, string> dictInnerEncryptionData = new Dictionary<string, string>();
 
-        static string enviar= Application.StartupPath + "\\fitxers\\PACTOTAL.txt";
+        static string enviar = Application.StartupPath + "\\fitxers\\PACTOTAL.txt";
         //decompress
-        string documents;
+        string documents = "";
 
-        
+
         public Spaceship(string spaceshipCode)
         {
             InitializeComponent();
             getAllPlanets();
             getSpaceshipData(spaceshipCode);
+            getInnerEnryptionData();
+            CleanDir(saveFolder);
 
         }
         private void getSpaceshipData(string spaceshipCode)
@@ -79,18 +80,14 @@ namespace Inner_Ring_Spaceship
             try
             {
                 DataSet infoSpaceship;
-                // infoSpaceship = Acc.PortarPerConsulta("select * from SpaceShips where CodeSpaceShip=" + "'" + label1.Text + "'");
-                infoSpaceship = Acc.PortarPerConsulta("select CodeSpaceShip, IPSpaceShip, PortSpaceShip, PortSpaceShip1, DescSpaceShipType from SpaceShips , SpaceShipTypes where CodeSpaceShip = '"+spaceshipCode+"'");
-                //    idSpaceshipSelected = infoSpaceship.Tables[0].Rows[0][0].ToString();
+                infoSpaceship = Acc.PortarPerConsulta("select CodeSpaceShip, IPSpaceShip, PortSpaceShip, PortSpaceShip1, DescSpaceShipType from SpaceShips , SpaceShipTypes where CodeSpaceShip = '" + spaceshipCode + "'");
                 codeSpaceshipSelected = infoSpaceship.Tables[0].Rows[0][0].ToString();
                 ipSpaceshipSelected = infoSpaceship.Tables[0].Rows[0][1].ToString();
                 portSpaceshipSelected = infoSpaceship.Tables[0].Rows[0][2].ToString();
                 portSpaceship1Selected = infoSpaceship.Tables[0].Rows[0][3].ToString();
                 Spaceshiptype = infoSpaceship.Tables[0].Rows[0][4].ToString();
 
-                setValues(); 
-
-
+                setValues();
             }
             catch (Exception ex)
             {
@@ -108,8 +105,7 @@ namespace Inner_Ring_Spaceship
             lbl_Type.Text = Spaceshiptype;
         }
 
-
-        private void sendMessage(string message = null, byte[] encrypted = null )
+        private void sendMessage(string message = null, byte[] encrypted = null)
         {
 
             Client = new TcpClient(ipPlanetSelected, Int32.Parse(portPlanetSelected));
@@ -126,7 +122,7 @@ namespace Inner_Ring_Spaceship
             NetStream.Write(frase, 0, frase.Length);
         }
 
-        
+
 
         #region Obtener Planetas, naves, Info Planetas, Codigo Envio
         private void getAllPlanets()
@@ -167,17 +163,16 @@ namespace Inner_Ring_Spaceship
         private void getCodeValidation()
         {
             DataSet codeValidation;
-            codeValidation = Acc.PortarPerConsulta("select * from InnerEncryption where idPlanet=1");// + idPlanetSelected);
+            codeValidation = Acc.PortarPerConsulta("select * from InnerEncryption where = " + "'" + idPlanetSelected + "'");
             idInnerEncryption = codeValidation.Tables[0].Rows[0][0].ToString();
             codeInnerEncryption = codeValidation.Tables[0].Rows[0][1].ToString();
-            idPlanetEncryption = codeValidation.Tables[0].Rows[0][2].ToString();
-         
+
         }
 
         private void getDeliveryCode()
         {
             DataSet codeValidation;
-            codeValidation = Acc.PortarPerConsulta("select * from DeliveryData where idPlanet=" + idPlanetSelected);
+            codeValidation = Acc.PortarPerConsulta("select * from DeliveryData where idPlanet=" + "'" + idPlanetSelected + "'");
             string codeDelivery = codeValidation.Tables[0].Rows[0][1].ToString();
             deliveryCode = codeDelivery;
         }
@@ -188,16 +183,23 @@ namespace Inner_Ring_Spaceship
             {
                 posicion++;
                 string messageToSend = "ER" + codeSpaceshipSelected + deliveryCode;
-                sendMessage( message: messageToSend);
+                sendMessage(message: messageToSend);
                 lbx_Missatges.Items.Add("+ " + messageToSend);
                 lbx_Missatges.Items.Add("");
             }
             else if (posicion == 1)
             {
                 posicion++;
-                sendMessage(encrypted: Encriptar(codeInnerEncryption)) ;
-                lbx_Missatges.Items.Add("+ Encripted Message Sent");
-
+                sendMessage(encrypted: Encriptar(codeInnerEncryption));
+                if (InvokeRequired)
+                {
+                    lbx_Missatges.Invoke(new MethodInvoker(
+                        delegate ()
+                        {
+                            lbx_Missatges.Items.Add("+ Encripted Message Sent");
+                        }
+                            ));
+                }
             }
             else if (posicion == 2)
             {
@@ -205,10 +207,18 @@ namespace Inner_Ring_Spaceship
                 getInnerEnryptionData();
                 unzipPacs();
                 numbersToString();
-                label5.Text = "The Files is Ready to Send ";
+
+                if (InvokeRequired)
+                {
+                    lbx_Missatges.Invoke(new MethodInvoker(
+                    delegate ()
+                    {
+                        lbl_GetFIleComplete.Text = "The Files is Ready to Send ";
+                    }
+                    ));
+                }
             }
         }
-
 
         private byte[] Encriptar(string texto)
         {
@@ -272,10 +282,8 @@ namespace Inner_Ring_Spaceship
                     SendingBuffer = new byte[CurrentPacketLength];
                     Fs.Read(SendingBuffer, 0, CurrentPacketLength);
                     netstream.Write(SendingBuffer, 0, (int)SendingBuffer.Length);
-
                 }
                 Fs.Close();
-
             }
             catch (Exception ex)
             {
@@ -287,7 +295,6 @@ namespace Inner_Ring_Spaceship
                 netstream.Close();
                 client.Close();
             }
-
         }
 
         private void numbersToString()
@@ -307,7 +314,6 @@ namespace Inner_Ring_Spaceship
                 StreamWriter wr = new StreamWriter(fs);
                 while (!final)
                 {
-
                     codi = Convert.ToString((char)stream.Read());
 
                     if (codi == "\r")
@@ -340,11 +346,6 @@ namespace Inner_Ring_Spaceship
             Conc();
         }
 
-
-        private void GetInfoSpaceShit_Click(object sender, EventArgs e)
-        {
-
-        }
         #region Crear Hilos
         private void createThreadToListener()
         {
@@ -417,7 +418,7 @@ namespace Inner_Ring_Spaceship
                     {
                         lbx_Missatges.Invoke(new MethodInvoker(delegate ()
                         {
-                            lbx_Missatges.Items.Add("- "+ mensaje);
+                            lbx_Missatges.Items.Add("- " + mensaje);
                         }));
                     }
                     str.Close();
@@ -437,15 +438,14 @@ namespace Inner_Ring_Spaceship
         public void ReceiveTCP(int portN)
         {
             DateTime thisDay = DateTime.Today;
-            TcpListener Listener = null;
-            string saveFolder = Application.StartupPath + "\\fitxers\\FitxerPacs\\Pacs"+thisDay.ToString("d")+"-"+idPlanetSelected;
+            //TcpListener ListenerRecieveCompressed = null;
             string name = "PACS.zip";
             string create = "";
             documents = name;
             try
             {
-                Listener = new TcpListener(IPAddress.Any, portN);
-                Listener.Start();
+                ListenerRecieveCompressed = new TcpListener(IPAddress.Any, portN);
+                ListenerRecieveCompressed.Start();
             }
             catch (Exception ex)
             {
@@ -469,13 +469,12 @@ namespace Inner_Ring_Spaceship
                 NetworkStream netstream = null;
                 Status = string.Empty;
                 try
-                {          
-                    if (Listener.Pending())
+                {
+                    if (ListenerRecieveCompressed.Pending())
                     {
                         CleanDir(saveFolder);
-                        client = Listener.AcceptTcpClient();
+                        client = ListenerRecieveCompressed.AcceptTcpClient();
                         netstream = client.GetStream();
-                        
 
                         create = saveFolder + "\\" + name;
 
@@ -502,26 +501,42 @@ namespace Inner_Ring_Spaceship
 
         private void unzipPacs()
         {
-            string carpeta = Application.StartupPath + "\\fitxers";
-            string name = "PACS.zip";
-            ZipFile.ExtractToDirectory(carpeta + "\\" + name, carpeta);
-
+            try
+            {
+                string carpeta = saveFolder;
+                string name = "PACS.zip";
+                ZipFile.ExtractToDirectory(carpeta + "\\" + name, carpeta);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Fail to UnzipPacs");
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void CleanDir(string dir)
         {
-            DirectoryInfo directory = new DirectoryInfo(dir);
-            if (!Directory.Exists(dir))
+            try
             {
-                Directory.CreateDirectory(dir);
+                DirectoryInfo directory = new DirectoryInfo(dir);
+                if (!Directory.Exists(dir))
+                {
+                    Directory.CreateDirectory(dir);
+                }
+                foreach (FileInfo fi in directory.GetFiles())
+                {
+                    fi.Delete();
+                }
+                foreach (DirectoryInfo di in directory.GetDirectories())
+                {
+                    di.Delete(true);
+                }
+
             }
-            foreach (FileInfo fi in directory.GetFiles())
+            catch (Exception ex)
             {
-                fi.Delete();
-            }
-            foreach (DirectoryInfo di in directory.GetDirectories())
-            {
-                di.Delete(true);
+                MessageBox.Show("Failed to clean the folder ");
+                MessageBox.Show(ex.Message);
             }
         }
         #endregion
@@ -537,13 +552,13 @@ namespace Inner_Ring_Spaceship
             {
                 lbl_GetFIleComplete.Text = "The document has not been created yet";
             }
+            CleanDir(saveFolder);
         }
-       
+
         private void btn_listener_Conect_Click(object sender, EventArgs e)
         {
             try
             {
-
                 createThreadToListener();
                 createThreadToCompressed();
             }
@@ -559,9 +574,9 @@ namespace Inner_Ring_Spaceship
             ListenerRecieveMessage.Stop();
             ListenerRecieveCompressed.Stop();
             hilo1.Abort();
-            hilo2.Abort();
+            //  hilo2.Abort();
             listenerRecieveStart = false;
-            listenerCompressedStart = false;
+            // listenerCompressedStart = false;
             lbx_Missatges.Items.Clear();
         }
     }
