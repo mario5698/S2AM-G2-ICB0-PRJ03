@@ -53,9 +53,9 @@ namespace Inner_Ring_Spaceship
             // 
             this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F);
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(358, 157);
+            this.comboBox2.Location = new System.Drawing.Point(291, 157);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 39);
+            this.comboBox2.Size = new System.Drawing.Size(188, 39);
             this.comboBox2.TabIndex = 1;
             // 
             // GetInfoPlanet
@@ -82,7 +82,7 @@ namespace Inner_Ring_Spaceship
             this.lbx_Missatges.ItemHeight = 31;
             this.lbx_Missatges.Location = new System.Drawing.Point(1327, 412);
             this.lbx_Missatges.Name = "lbx_Missatges";
-            this.lbx_Missatges.Size = new System.Drawing.Size(488, 159);
+            this.lbx_Missatges.Size = new System.Drawing.Size(488, 345);
             this.lbx_Missatges.TabIndex = 13;
             // 
             // btn_listener_Desc

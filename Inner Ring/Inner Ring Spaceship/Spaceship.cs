@@ -551,7 +551,6 @@ namespace Inner_Ring_Spaceship
             {
                 lbl_GetFIleComplete.Text = "The document has not been created yet";
             }
-            CleanDir(saveFolder);
         }
 
         private void btn_listener_Conect_Click(object sender, EventArgs e)

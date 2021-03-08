@@ -7,11 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AccesoDades;
 
 namespace Inner_Ring_Spaceship
 {
     public partial class Login : Form
     {
+        Acceso Acc = new Acceso();
         public Login()
         {
             InitializeComponent();
@@ -19,10 +21,7 @@ namespace Inner_Ring_Spaceship
 
         private void btn_Login_Click(object sender, EventArgs e)
         {
-            Spaceship space = new Spaceship(txt_CodeSpaceship.Text);
-            space.Show();
-            this.Hide();
-           
+            checkCode(txt_CodeSpaceship.Text);
         }
 
         private void btn_Exit_Click(object sender, EventArgs e)
@@ -34,8 +33,40 @@ namespace Inner_Ring_Spaceship
         {
             if (e.KeyCode == Keys.Enter)
             {
-             //   buttonTest_Click(this, new EventArgs());
+                checkCode(txt_CodeSpaceship.Text);
             }
+        }
+
+        private void checkCode(string codeSpaceshìp)
+        {
+            try
+            {
+                DataSet spaceship;
+                spaceship = Acc.PortarPerConsulta("select * from SpaceShips where CodeSpaceShip = "+"'"+codeSpaceshìp+"'");
+                int existe = spaceship.Tables[0].Rows.Count;
+                if (existe > 0)
+                {
+                    openForm(codeSpaceshìp);
+                }
+                else
+                {
+                    MessageBox.Show("Invalid Code");
+                }
+            }
+            catch (Exception ex )
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            
+          
+        }
+
+        private void openForm(string codeSpaceship)
+        {
+            Spaceship space = new Spaceship(codeSpaceship);
+            space.Show();
+            this.Hide();
         }
     }
 }
