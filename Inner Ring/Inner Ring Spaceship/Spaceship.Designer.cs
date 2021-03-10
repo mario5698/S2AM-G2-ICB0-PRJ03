@@ -80,7 +80,7 @@ namespace Inner_Ring_Spaceship
             this.lbx_Missatges.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbx_Missatges.FormattingEnabled = true;
             this.lbx_Missatges.ItemHeight = 31;
-            this.lbx_Missatges.Location = new System.Drawing.Point(1327, 412);
+            this.lbx_Missatges.Location = new System.Drawing.Point(711, 422);
             this.lbx_Missatges.Name = "lbx_Missatges";
             this.lbx_Missatges.Size = new System.Drawing.Size(488, 345);
             this.lbx_Missatges.TabIndex = 13;
@@ -89,7 +89,7 @@ namespace Inner_Ring_Spaceship
             // 
             this.btn_listener_Desc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.btn_listener_Desc.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_listener_Desc.Location = new System.Drawing.Point(1589, 302);
+            this.btn_listener_Desc.Location = new System.Drawing.Point(973, 312);
             this.btn_listener_Desc.Name = "btn_listener_Desc";
             this.btn_listener_Desc.Size = new System.Drawing.Size(226, 82);
             this.btn_listener_Desc.TabIndex = 14;
@@ -101,7 +101,7 @@ namespace Inner_Ring_Spaceship
             // 
             this.btn_listener_Conect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.btn_listener_Conect.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_listener_Conect.Location = new System.Drawing.Point(1327, 302);
+            this.btn_listener_Conect.Location = new System.Drawing.Point(711, 312);
             this.btn_listener_Conect.Name = "btn_listener_Conect";
             this.btn_listener_Conect.Size = new System.Drawing.Size(222, 82);
             this.btn_listener_Conect.TabIndex = 16;
@@ -133,7 +133,7 @@ namespace Inner_Ring_Spaceship
             // 
             this.lbl_Ip.AutoSize = true;
             this.lbl_Ip.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Ip.Location = new System.Drawing.Point(1594, 145);
+            this.lbl_Ip.Location = new System.Drawing.Point(978, 155);
             this.lbl_Ip.Name = "lbl_Ip";
             this.lbl_Ip.Size = new System.Drawing.Size(79, 31);
             this.lbl_Ip.TabIndex = 20;
@@ -143,7 +143,7 @@ namespace Inner_Ring_Spaceship
             // 
             this.lbl_Code.AutoSize = true;
             this.lbl_Code.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Code.Location = new System.Drawing.Point(1596, 43);
+            this.lbl_Code.Location = new System.Drawing.Point(980, 53);
             this.lbl_Code.Name = "lbl_Code";
             this.lbl_Code.Size = new System.Drawing.Size(115, 31);
             this.lbl_Code.TabIndex = 21;
@@ -153,7 +153,7 @@ namespace Inner_Ring_Spaceship
             // 
             this.lbl_Port.AutoSize = true;
             this.lbl_Port.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Port.Location = new System.Drawing.Point(1594, 199);
+            this.lbl_Port.Location = new System.Drawing.Point(978, 209);
             this.lbl_Port.Name = "lbl_Port";
             this.lbl_Port.Size = new System.Drawing.Size(106, 31);
             this.lbl_Port.TabIndex = 22;
@@ -163,7 +163,7 @@ namespace Inner_Ring_Spaceship
             // 
             this.lbl_Port1.AutoSize = true;
             this.lbl_Port1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Port1.Location = new System.Drawing.Point(1719, 199);
+            this.lbl_Port1.Location = new System.Drawing.Point(1103, 209);
             this.lbl_Port1.Name = "lbl_Port1";
             this.lbl_Port1.Size = new System.Drawing.Size(121, 31);
             this.lbl_Port1.TabIndex = 25;
@@ -173,7 +173,7 @@ namespace Inner_Ring_Spaceship
             // 
             this.lbl_Type.AutoSize = true;
             this.lbl_Type.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Type.Location = new System.Drawing.Point(1596, 91);
+            this.lbl_Type.Location = new System.Drawing.Point(980, 101);
             this.lbl_Type.Name = "lbl_Type";
             this.lbl_Type.Size = new System.Drawing.Size(117, 31);
             this.lbl_Type.TabIndex = 26;
@@ -183,7 +183,7 @@ namespace Inner_Ring_Spaceship
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(1321, 43);
+            this.label1.Location = new System.Drawing.Point(705, 53);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(213, 31);
             this.label1.TabIndex = 27;
@@ -193,7 +193,7 @@ namespace Inner_Ring_Spaceship
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(1321, 145);
+            this.label2.Location = new System.Drawing.Point(705, 155);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(174, 31);
             this.label2.TabIndex = 28;
@@ -203,7 +203,7 @@ namespace Inner_Ring_Spaceship
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(1321, 199);
+            this.label3.Location = new System.Drawing.Point(705, 209);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(228, 31);
             this.label3.TabIndex = 29;
@@ -213,7 +213,7 @@ namespace Inner_Ring_Spaceship
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(1321, 91);
+            this.label4.Location = new System.Drawing.Point(705, 101);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(209, 31);
             this.label4.TabIndex = 30;
@@ -224,7 +224,7 @@ namespace Inner_Ring_Spaceship
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.ClientSize = new System.Drawing.Size(1924, 1061);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
