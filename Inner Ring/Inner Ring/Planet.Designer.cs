@@ -36,7 +36,6 @@ namespace Inner_Ring
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtRSA = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
@@ -53,9 +52,6 @@ namespace Inner_Ring
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // comboBox1
@@ -128,13 +124,6 @@ namespace Inner_Ring
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(0, 20);
             this.label3.TabIndex = 7;
-            // 
-            // txtRSA
-            // 
-            this.txtRSA.Location = new System.Drawing.Point(21, 667);
-            this.txtRSA.Name = "txtRSA";
-            this.txtRSA.Size = new System.Drawing.Size(150, 26);
-            this.txtRSA.TabIndex = 8;
             // 
             // label5
             // 
@@ -248,7 +237,7 @@ namespace Inner_Ring
             this.lbx_Missatges.FormattingEnabled = true;
             this.lbx_Missatges.ItemHeight = 20;
             this.lbx_Missatges.Location = new System.Drawing.Point(21, 122);
-            this.lbx_Missatges.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lbx_Missatges.Margin = new System.Windows.Forms.Padding(2);
             this.lbx_Missatges.Name = "lbx_Missatges";
             this.lbx_Missatges.Size = new System.Drawing.Size(312, 524);
             this.lbx_Missatges.TabIndex = 10;
@@ -287,7 +276,6 @@ namespace Inner_Ring
             this.button8.TabIndex = 25;
             this.button8.Text = "ENC";
             this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button9
             // 
@@ -299,28 +287,6 @@ namespace Inner_Ring
             this.button9.TabIndex = 26;
             this.button9.Text = "DEC";
             this.button9.UseVisualStyleBackColor = true;
-            this.button9.Click += new System.EventHandler(this.button9_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(390, 702);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(150, 26);
-            this.textBox1.TabIndex = 27;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(557, 702);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(150, 26);
-            this.textBox2.TabIndex = 28;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(734, 702);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(150, 26);
-            this.textBox3.TabIndex = 29;
             // 
             // Planet
             // 
@@ -328,9 +294,6 @@ namespace Inner_Ring
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
             this.ClientSize = new System.Drawing.Size(1924, 1050);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button8);
             this.Controls.Add(this.button7);
@@ -347,7 +310,6 @@ namespace Inner_Ring
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.lbx_Missatges);
-            this.Controls.Add(this.txtRSA);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -376,7 +338,6 @@ namespace Inner_Ring
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtRSA;
 
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
@@ -394,9 +355,6 @@ namespace Inner_Ring
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
     }
 }
 

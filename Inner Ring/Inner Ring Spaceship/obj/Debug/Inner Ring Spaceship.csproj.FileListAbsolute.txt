@@ -2,6 +2,7 @@ C:\Users\Mario\Desktop\Github\G2Team\S2AM-G2-ICB0-PRJ03\Inner Ring\Ejecutables\I
 C:\Users\Mario\Desktop\Github\G2Team\S2AM-G2-ICB0-PRJ03\Inner Ring\Ejecutables\Inner Ring Spaceship.exe
 C:\Users\Mario\Desktop\Github\G2Team\S2AM-G2-ICB0-PRJ03\Inner Ring\Ejecutables\Inner Ring Spaceship.pdb
 C:\Users\Mario\Desktop\Github\G2Team\S2AM-G2-ICB0-PRJ03\Inner Ring\Inner Ring Spaceship\obj\Debug\Inner Ring Spaceship.csprojAssemblyReference.cache
+C:\Users\Mario\Desktop\Github\G2Team\S2AM-G2-ICB0-PRJ03\Inner Ring\Inner Ring Spaceship\obj\Debug\Inner_Ring_Spaceship.Login.resources
 C:\Users\Mario\Desktop\Github\G2Team\S2AM-G2-ICB0-PRJ03\Inner Ring\Inner Ring Spaceship\obj\Debug\Inner_Ring_Spaceship.Properties.Resources.resources
 C:\Users\Mario\Desktop\Github\G2Team\S2AM-G2-ICB0-PRJ03\Inner Ring\Inner Ring Spaceship\obj\Debug\Inner_Ring_Spaceship.Spaceship.resources
 C:\Users\Mario\Desktop\Github\G2Team\S2AM-G2-ICB0-PRJ03\Inner Ring\Inner Ring Spaceship\obj\Debug\Inner Ring Spaceship.csproj.GenerateResource.cache

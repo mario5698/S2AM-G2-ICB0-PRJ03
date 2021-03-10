@@ -605,18 +605,6 @@ namespace Inner_Ring
         {
             IniciarRSA();
         }
-        byte[] encryp;
-        private void button9_Click(object sender, EventArgs e)
-        {
-            textBox3.Text = ByteConverter.GetString(Desencriptar(encryp));
-        }
-
-        private void button8_Click(object sender, EventArgs e)
-        {
-            encryp = Encriptar(textBox1.Text);
-            textBox2.Text = ByteConverter.GetString(Encriptar(textBox1.Text));
-        }
-
         public void StartReceiving()
         {
             ReceiveTCP(int.Parse(planetSelected[0][12].ToString()));
