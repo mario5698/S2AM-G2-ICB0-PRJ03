@@ -331,7 +331,8 @@ namespace Inner_Ring
                 ZipFile.CreateFromDirectory(Application.StartupPath + "\\fitxers\\PACS", Application.StartupPath + "\\fitxers\\PACS.zip");
             }
             catch (Exception)
-            { }
+            {
+            }
         }
 
         private string Agregar_Num()
@@ -651,7 +652,7 @@ namespace Inner_Ring
                 netstream = client.GetStream();
                 FileStream Fs = new FileStream(M, FileMode.Open, FileAccess.Read);
                 int NoOfPackets = Convert.ToInt32(Math.Ceiling(Convert.ToDouble(Fs.Length) / Convert.ToDouble(BufferSize)));
-                int TotalLength = (int)Fs.Length, CurrentPacketLength, counter = 0;
+                int TotalLength = (int)Fs.Length, CurrentPacketLength;
                 for (int i = 0; i < NoOfPackets; i++)
                 {
                     if (TotalLength > BufferSize)
