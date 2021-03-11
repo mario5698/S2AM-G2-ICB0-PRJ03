@@ -525,7 +525,7 @@ namespace Inner_Ring
         private void Insert_EncryptionData()
         {
             planets = Acc.PortarPerConsulta("select * from Planets");
-            idinn = Acc.PortarPerConsulta("select * from innerencryption where idplanet = " + idpla).Tables[0].Rows[0][0].ToString();
+            idinn = Acc.PortarPerConsulta("select * from innerencryption where idplanet = " + idpla).Tables[0].Rows[0]["idinnerencryption"].ToString();
             DataSet infotabla = Acc.PortarTaula("InnerEncryptionData");
             DataRow row = null;
             for (char i = 'A'; i <= 'Z'; i++)
@@ -557,18 +557,12 @@ namespace Inner_Ring
             comprimit.Start();
             fitxers.Start();
         }
-
-        private void encryA_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void DeleteData()
         {
-            idpla = Acc.PortarPerConsulta("select * from planets where idplanet = '" + comboBox1.SelectedValue + "'").Tables[0].Rows[0][0].ToString();
+            idpla = Acc.PortarPerConsulta("select * from planets where idplanet = '" + comboBox1.SelectedValue + "'").Tables[0].Rows[0]["idplanet"].ToString();
             try
             {
-                idinn = Acc.PortarPerConsulta("select * from innerencryption where idplanet = " + idpla).Tables[0].Rows[0][0].ToString();
+                idinn = Acc.PortarPerConsulta("select * from innerencryption where idplanet = " + idpla).Tables[0].Rows[0]["idinnerencryption"].ToString();
                 Acc.Executa("delete from innerencryptiondata where idinnerencryption = " + idinn);
                 Acc.Executa("delete from innerencryption where idplanet = " + idpla);
             }
@@ -590,9 +584,9 @@ namespace Inner_Ring
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-            idpla = Acc.PortarPerConsulta("select * from planets where idplanet = '" + comboBox1.SelectedValue + "'").Tables[0].Rows[0][0].ToString();
+            idpla = Acc.PortarPerConsulta("select * from planets where idplanet = '" + comboBox1.SelectedValue + "'").Tables[0].Rows[0]["idplanet"].ToString();
             planetSelected = planets.Tables[0].Select("IdPlanet=" + comboBox1.SelectedValue);
-            portPlanetSelected = planetSelected[0][11].ToString();
+            portPlanetSelected = planetSelected[0]["portplanet"].ToString();
             conectado = true;
             HiloTCP();
             ThreadStart Ts = new ThreadStart(StartReceiving);
@@ -607,7 +601,7 @@ namespace Inner_Ring
         }
         public void StartReceiving()
         {
-            ReceiveTCP(int.Parse(planetSelected[0][12].ToString()));
+            ReceiveTCP(int.Parse(planetSelected[0]["portplanet1"].ToString()));
         }
 
         private void SendMessage(string mes, string ip, string port)
@@ -672,7 +666,7 @@ namespace Inner_Ring
         private void button4_Click(object sender, EventArgs e)
         {
             planetSelected = planets.Tables[0].Select("IdPlanet=" + comboBox1.SelectedValue);
-            portPlanetSelected = planetSelected[0][11].ToString();
+            portPlanetSelected = planetSelected[0]["portplanet"].ToString();
             try
             {
                 dades = Encoding.ASCII.GetBytes(txb_message.Text);
@@ -700,7 +694,7 @@ namespace Inner_Ring
         private void IniciarRSA()
         {
             planetSelected = planets.Tables[0].Select("IdPlanet=" + comboBox1.SelectedValue);
-            portPlanetSelected = planetSelected[0][11].ToString();
+            portPlanetSelected = planetSelected[0]["portplanet"].ToString();
             parametros = new CspParameters();
             parametros.KeyContainerName = Acc.PortarPerConsulta("select * from planets where idplanet = " + comboBox1.SelectedValue).Tables[0].Rows[0]["codeplanet"].ToString();
             rsa = new RSACryptoServiceProvider(parametros);

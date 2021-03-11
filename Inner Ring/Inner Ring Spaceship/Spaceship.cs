@@ -80,11 +80,11 @@ namespace Inner_Ring_Spaceship
             {
                 DataSet infoSpaceship;
                 infoSpaceship = Acc.PortarPerConsulta("select CodeSpaceShip, IPSpaceShip, PortSpaceShip, PortSpaceShip1, DescSpaceShipType from SpaceShips, SpaceShipTypes where CodeSpaceShip = '"+spaceshipCode+"'");
-                codeSpaceshipSelected = infoSpaceship.Tables[0].Rows[0][0].ToString();
-                ipSpaceshipSelected = infoSpaceship.Tables[0].Rows[0][1].ToString();
-                portSpaceshipSelected = infoSpaceship.Tables[0].Rows[0][2].ToString();
-                portSpaceship1Selected = infoSpaceship.Tables[0].Rows[0][3].ToString();
-                Spaceshiptype = infoSpaceship.Tables[0].Rows[0][4].ToString();
+                codeSpaceshipSelected = infoSpaceship.Tables[0].Rows[0]["codespaceship"].ToString();
+                ipSpaceshipSelected = infoSpaceship.Tables[0].Rows[0]["ipspaceship"].ToString();
+                portSpaceshipSelected = infoSpaceship.Tables[0].Rows[0]["portspaceship"].ToString();
+                portSpaceship1Selected = infoSpaceship.Tables[0].Rows[0]["portspaceship1"].ToString();
+                Spaceshiptype = infoSpaceship.Tables[0].Rows[0]["DescSpaceShipType"].ToString();
 
                 setValues();
             }
@@ -139,10 +139,10 @@ namespace Inner_Ring_Spaceship
         private void GetInfoPlanet_Click(object sender, EventArgs e)
         {
             DataRow[] planetSelected = planets.Tables[0].Select("IdPlanet=" + comboBox2.SelectedValue);
-            idPlanetSelected = planetSelected[0][0].ToString();
-            ipPlanetSelected = planetSelected[0][10].ToString();
-            portPlanetSelected = planetSelected[0][11].ToString();
-            port1PlanetSelected = planetSelected[0][12].ToString();
+            idPlanetSelected = planetSelected[0]["idplanet"].ToString();
+            ipPlanetSelected = planetSelected[0]["ipplanet"].ToString();
+            portPlanetSelected = planetSelected[0]["portplanet"].ToString();
+            port1PlanetSelected = planetSelected[0]["portplanet1"].ToString();
             getDeliveryCode();
             startCommunication();
         }
@@ -161,8 +161,8 @@ namespace Inner_Ring_Spaceship
         {
             DataSet codeValidation;
             codeValidation = Acc.PortarPerConsulta("select * from InnerEncryption where idPlanet = "+idPlanetSelected);
-            idInnerEncryption = codeValidation.Tables[0].Rows[0][0].ToString();
-            codeInnerEncryption = codeValidation.Tables[0].Rows[0][1].ToString();
+            idInnerEncryption = codeValidation.Tables[0].Rows[0]["idinnerencryption"].ToString();
+            codeInnerEncryption = codeValidation.Tables[0].Rows[0]["validationcode"].ToString();
 
         }
 
@@ -170,7 +170,7 @@ namespace Inner_Ring_Spaceship
         {
             DataSet codeValidation;
             codeValidation = Acc.PortarPerConsulta("select * from DeliveryData where idPlanet=" + "'" + idPlanetSelected + "'");
-            string codeDelivery = codeValidation.Tables[0].Rows[0][1].ToString();
+            string codeDelivery = codeValidation.Tables[0].Rows[0]["codedelivery"].ToString();
             deliveryCode = codeDelivery;
         }
 
@@ -565,6 +565,11 @@ namespace Inner_Ring_Spaceship
                 MessageBox.Show("listener button connect ");
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void Spaceship_Load(object sender, EventArgs e)
+        {
+
         }
 
         private void btn_listener_Desc_Click(object sender, EventArgs e)

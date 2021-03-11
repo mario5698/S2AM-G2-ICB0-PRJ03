@@ -1,0 +1,37 @@
+C:\Users\Snake\Documents\GitHub\S2AM-G2-Team\ejecutables\Form_Base.dll
+C:\Users\Snake\Documents\GitHub\S2AM-G2-Team\ejecutables\Form_Base.pdb
+C:\Users\Snake\Documents\GitHub\S2AM-G2-Team\Form_Base\obj\Debug\Form_Base.Form_Base.resources
+C:\Users\Snake\Documents\GitHub\S2AM-G2-Team\Form_Base\obj\Debug\Form_Base.csproj.GenerateResource.cache
+C:\Users\Snake\Documents\GitHub\S2AM-G2-Team\Form_Base\obj\Debug\Form_Base.csproj.CoreCompileInputs.cache
+C:\Users\Snake\Documents\GitHub\S2AM-G2-Team\Form_Base\obj\Debug\Form_Base.csproj.CopyComplete
+C:\Users\Snake\Documents\GitHub\S2AM-G2-Team\Form_Base\obj\Debug\Form_Base.dll
+C:\Users\Snake\Documents\GitHub\S2AM-G2-Team\Form_Base\obj\Debug\Form_Base.pdb
+C:\Users\Snake\Documents\GitHub\S2AM-G2-Team\Form_Base\obj\Debug\Form_Base.csprojAssemblyReference.cache
+C:\Users\Miguel\Desktop\GitHub\S2AM-G2-Team\ejecutables\Form_Base.dll
+C:\Users\Miguel\Desktop\GitHub\S2AM-G2-Team\ejecutables\Form_Base.pdb
+C:\Users\Miguel\Desktop\GitHub\S2AM-G2-Team\Form_Base\obj\Debug\Form_Base.csprojAssemblyReference.cache
+C:\Users\Miguel\Desktop\GitHub\S2AM-G2-Team\Form_Base\obj\Debug\Form_Base.Form_base.resources
+C:\Users\Miguel\Desktop\GitHub\S2AM-G2-Team\Form_Base\obj\Debug\Form_Base.csproj.GenerateResource.cache
+C:\Users\Miguel\Desktop\GitHub\S2AM-G2-Team\Form_Base\obj\Debug\Form_Base.csproj.CoreCompileInputs.cache
+C:\Users\Miguel\Desktop\GitHub\S2AM-G2-Team\Form_Base\obj\Debug\Form_Base.csproj.CopyComplete
+C:\Users\Miguel\Desktop\GitHub\S2AM-G2-Team\Form_Base\obj\Debug\Form_Base.dll
+C:\Users\Miguel\Desktop\GitHub\S2AM-G2-Team\Form_Base\obj\Debug\Form_Base.pdb
+C:\Users\Mario\Desktop\Github\S2AM-G2-Team\ejecutables\Form_Base.dll
+C:\Users\Mario\Desktop\Github\S2AM-G2-Team\ejecutables\Form_Base.pdb
+C:\Users\Mario\Desktop\Github\S2AM-G2-Team\Form_Base\obj\Debug\Form_Base.csprojAssemblyReference.cache
+C:\Users\Mario\Desktop\Github\S2AM-G2-Team\Form_Base\obj\Debug\Form_Base.Form_base.resources
+C:\Users\Mario\Desktop\Github\S2AM-G2-Team\Form_Base\obj\Debug\Form_Base.csproj.GenerateResource.cache
+C:\Users\Mario\Desktop\Github\S2AM-G2-Team\Form_Base\obj\Debug\Form_Base.csproj.CoreCompileInputs.cache
+C:\Users\Mario\Desktop\Github\S2AM-G2-Team\Form_Base\obj\Debug\Form_Base.csproj.CopyComplete
+C:\Users\Mario\Desktop\Github\S2AM-G2-Team\Form_Base\obj\Debug\Form_Base.dll
+C:\Users\Mario\Desktop\Github\S2AM-G2-Team\Form_Base\obj\Debug\Form_Base.pdb
+C:\Users\Miguel\Desktop\GitHub\S2AM-G2-ICB0-PRJ03\Inner Ring\Form_Base\obj\Debug\Form_Base.csprojAssemblyReference.cache
+C:\Users\Miguel\Desktop\GitHub\S2AM-G2-ICB0-PRJ03\Inner Ring\Form_Base\obj\Debug\Form_Base.Form_base.resources
+C:\Users\Miguel\Desktop\GitHub\S2AM-G2-ICB0-PRJ03\Inner Ring\Form_Base\obj\Debug\Form_Base.csproj.GenerateResource.cache
+C:\Users\Miguel\Desktop\GitHub\S2AM-G2-ICB0-PRJ03\Inner Ring\Form_Base\obj\Debug\Form_Base.csproj.CoreCompileInputs.cache
+C:\Users\Miguel\Desktop\GitHub\S2AM-G2-ICB0-PRJ03\Inner Ring\Form_Base\obj\Debug\Form_Base.dll
+C:\Users\Miguel\Desktop\GitHub\S2AM-G2-ICB0-PRJ03\Inner Ring\Form_Base\obj\Debug\Form_Base.pdb
+C:\Users\Miguel\Desktop\GitHub\S2AM-G2-ICB0-PRJ03\Inner Ring\ejecutables\Form_Base.dll
+C:\Users\Miguel\Desktop\GitHub\S2AM-G2-ICB0-PRJ03\Inner Ring\ejecutables\Form_Base.pdb
+C:\Users\Miguel\Desktop\GitHub\S2AM-G2-ICB0-PRJ03\Inner Ring\Form_Base\obj\Debug\Form_Base.csproj.CopyComplete
+C:\Users\Miguel\Desktop\GitHub\S2AM-G2-ICB0-PRJ03\Inner Ring\Form_Base\obj\Debug\Form_Base.Properties.Resources.resources
