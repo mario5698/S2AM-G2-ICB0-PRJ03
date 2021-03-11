@@ -18,6 +18,7 @@ namespace SpaceManager
             tabla = "planets";
             order = "descplanet";
             type = "asc";
+            id = "idplanet";
             dtg_head = new string[13] {"Id", "Codigo", "Descripcion", "Id Sector", "Longitud", "Latitud", "Parsecs",
                 "Id Specie", "Id Filiacion", "IP", "Puerto", "Puerto*",  "Imagen"};
             InitializeComponent();

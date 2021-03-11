@@ -19,13 +19,14 @@ namespace Form_Base
         Acceso obj;
         Encrypt cry;
         public DataTable infotabla;
-        protected string tabla, order, type;
+        protected string tabla, order, type, id;
         protected bool has_pass = false;
         protected bool nuevo = false;
         protected DataRow row;
         string pass_orig;
         protected string[] dtg_head;
         DataSet dts;
+        string query;
 
         public Form_base()
         {
@@ -47,9 +48,12 @@ namespace Form_Base
 
         private void Portar_Dades()
         {
-            dts = obj.PortarPerConsulta("Select * from " + tabla + " order by " + order + " " + type);
+            query = "Select * from " + tabla + " order by " + order + " " + type;
+            dts = obj.PortarPerConsulta(query);
             infotabla = dts.Tables[0];
             dtgUsers.DataSource = infotabla;
+            dtgUsers.Columns[id].Visible = false;
+
         }
 
         private void Dtg_header()
@@ -125,9 +129,8 @@ namespace Form_Base
                 if (!vacios)
                 {
                     infotabla.Rows.Add(row);
-                    Hash_Pass();
                     nuevo = false;
-                    obj.Actualitzar(dts);
+                    obj.Actualitzar(dts, query);
                     Portar_Dades();
                     Info_Textbox();
                     cancel.Hide();
@@ -146,7 +149,7 @@ namespace Form_Base
             {
                 nuevo = false;
                 Hash_Pass();
-                obj.Actualitzar(dts);
+                obj.Actualitzar(dts, query);
                 Portar_Dades();
                 Info_Textbox();
 

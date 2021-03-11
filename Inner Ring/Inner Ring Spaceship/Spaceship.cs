@@ -72,7 +72,6 @@ namespace Inner_Ring_Spaceship
             getAllPlanets();
             getSpaceshipData(spaceshipCode);
             CleanDir(saveFolder);
-
         }
         private void getSpaceshipData(string spaceshipCode)
         {

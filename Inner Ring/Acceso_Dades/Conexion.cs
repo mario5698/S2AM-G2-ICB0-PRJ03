@@ -55,7 +55,7 @@ namespace AccesoDades
             return dts;
         }
 
-        public void Actualitzar(DataSet dts)
+        public void Actualitzar(DataSet dts, string query)
         {
             conexion.Open();
             SqlDataAdapter adaptador;
