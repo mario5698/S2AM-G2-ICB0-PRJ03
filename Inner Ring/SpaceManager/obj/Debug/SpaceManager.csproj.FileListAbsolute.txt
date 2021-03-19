@@ -22,3 +22,5 @@ C:\Users\Miguel\Desktop\GitHub\S2AM-G2-ICB0-PRJ03\Inner Ring\SpaceManager\bin\De
 C:\Users\Miguel\Desktop\GitHub\S2AM-G2-ICB0-PRJ03\Inner Ring\Ejecutables\SpaceManager.exe.config
 C:\Users\Miguel\Desktop\GitHub\S2AM-G2-ICB0-PRJ03\Inner Ring\Ejecutables\SpaceManager.exe
 C:\Users\Miguel\Desktop\GitHub\S2AM-G2-ICB0-PRJ03\Inner Ring\Ejecutables\SpaceManager.pdb
+C:\Users\Miguel\Desktop\GitHub\S2AM-G2-ICB0-PRJ03\Inner Ring\SpaceManager\obj\Debug\SpaceManager.ControlSpaceShip.resources
+C:\Users\Miguel\Desktop\GitHub\S2AM-G2-ICB0-PRJ03\Inner Ring\SpaceManager\obj\Debug\SpaceManager.ControlDeliveryData.resources

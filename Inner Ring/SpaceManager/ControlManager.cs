@@ -13,6 +13,9 @@ namespace SpaceManager
     public partial class ControlManager : Form
     {
         ControlPlanet plc = new ControlPlanet();
+        ControlSpaceShip spc = new ControlSpaceShip();
+        ControlDeliveryData ddc = new ControlDeliveryData();
+
 
         public ControlManager(string user, string rank)
         {
@@ -40,6 +43,16 @@ namespace SpaceManager
         private void pnl_data_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ShowForms(spc);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ShowForms(ddc);
         }
     }
 }

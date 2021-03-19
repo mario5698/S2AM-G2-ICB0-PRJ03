@@ -7,21 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Form_Base;
 
 namespace SpaceManager
 {
-    public partial class ControlPlanet : Form_Base.Form_base
+    public partial class ControlSpaceShip : Form_Base.Form_base
     {
-        public ControlPlanet()
+        public ControlSpaceShip()
         {
-            tabla = "planets";
-            order = "descplanet";
+            tabla = "spaceships";
+            order = "codespaceship";
             type = "asc";
-            id = "idplanet";
-            pic = "PlanetPicture";
-            dtg_head = new string[13] {"Id", "Codigo", "Descripcion", "Id Sector", "Longitud", "Latitud", "Parsecs",
-                "Id Specie", "Id Filiacion", "IP", "Puerto", "Puerto*",  "Imagen"};
+            id = "idspaceship";
+            pic = "SpaceShipPicture";
+            dtg_head = new string[7] {"Id", "Id Tipo de Nave", "Codigo", "IP", "Puerto", "Puerto*",  "Imagen"};
             InitializeComponent();
         }
 

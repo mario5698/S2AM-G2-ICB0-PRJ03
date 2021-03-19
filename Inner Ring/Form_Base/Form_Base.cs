@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BlibliotecaG2;
 using Controles_Usuario;
-using System.IO;
+using System.IO;  
 
 namespace Form_Base
 {
@@ -19,7 +19,7 @@ namespace Form_Base
         Acceso obj;
         Encrypt cry;
         public DataTable infotabla;
-        protected string tabla, order, type, id;
+        protected string tabla, order, type, id, pic;
         protected bool has_pass = false;
         protected bool nuevo = false;
         protected DataRow row;
@@ -53,7 +53,6 @@ namespace Form_Base
             infotabla = dts.Tables[0];
             dtgUsers.DataSource = infotabla;
             dtgUsers.Columns[id].Visible = false;
-
         }
 
         private void Dtg_header()
@@ -152,7 +151,6 @@ namespace Form_Base
                 obj.Actualitzar(dts, query);
                 Portar_Dades();
                 Info_Textbox();
-
             }
         }
 
@@ -198,7 +196,7 @@ namespace Form_Base
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 Image img = Image.FromFile(Application.StartupPath + "\\images\\" + ofd.SafeFileName);
-                infotabla.Rows[dtgUsers.CurrentCell.RowIndex]["PlanetPicture"] = ofd.SafeFileName;
+                infotabla.Rows[dtgUsers.CurrentCell.RowIndex][pic] = ofd.SafeFileName;
                 pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
                 pictureBox1.Image = img;
             }
@@ -206,15 +204,16 @@ namespace Form_Base
 
         private void ChangeImage(Object sender, EventArgs e)
         {
-
-            foreach (Control ctr in Controls)
-            {
-                if (dtgUsers.CurrentCell != null &&
-                    infotabla.Rows[dtgUsers.CurrentCell.RowIndex]["PlanetPicture"] != DBNull.Value)
+            if (pic != null) {
+                foreach (Control ctr in Controls)
                 {
-                    string p = Application.StartupPath + "\\images\\" + infotabla.Rows[dtgUsers.CurrentCell.RowIndex]["PlanetPicture"].ToString();
-                    pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-                    pictureBox1.Image = Image.FromFile(p);
+                    if (dtgUsers.CurrentCell != null &&
+                        infotabla.Rows[dtgUsers.CurrentCell.RowIndex][pic] != DBNull.Value)
+                    {
+                        string p = Application.StartupPath + "\\images\\" + infotabla.Rows[dtgUsers.CurrentCell.RowIndex][pic].ToString();
+                        pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                        pictureBox1.Image = Image.FromFile(p);
+                    }
                 }
             }
         }
@@ -225,4 +224,3 @@ namespace Form_Base
         }
     }
 }
-    

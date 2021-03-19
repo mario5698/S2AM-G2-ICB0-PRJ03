@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ControlDeliveryData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ControlDeliveryData.Designer.cs">
+      <DependentUpon>ControlDeliveryData.cs</DependentUpon>
+    </Compile>
     <Compile Include="ControlManager.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -58,6 +64,12 @@
     <Compile Include="ControlPlanet.Designer.cs">
       <DependentUpon>ControlPlanet.cs</DependentUpon>
     </Compile>
+    <Compile Include="ControlSpaceShip.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ControlSpaceShip.Designer.cs">
+      <DependentUpon>ControlSpaceShip.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginManager.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,11 +78,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ControlDeliveryData.resx">
+      <DependentUpon>ControlDeliveryData.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ControlManager.resx">
       <DependentUpon>ControlManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ControlPlanet.resx">
       <DependentUpon>ControlPlanet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlSpaceShip.resx">
+      <DependentUpon>ControlSpaceShip.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginManager.resx">
       <DependentUpon>LoginManager.cs</DependentUpon>
