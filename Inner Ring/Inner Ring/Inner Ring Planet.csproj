@@ -193,6 +193,17 @@
       <Project>{7ef7eaf2-d966-4f20-a306-a76267b5a31f}</Project>
       <Name>AccesoDades</Name>
     </ProjectReference>
+    <ProjectReference Include="..\BlibliotecaG2\BibliotecaG2.csproj">
+      <Project>{67032F4E-7F9B-4F43-84B5-82C737A1573A}</Project>
+      <Name>BibliotecaG2</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GalaxyUI\GalaxyUI.csproj">
+      <Project>{b08709a7-9e0a-412e-9bc9-34befe3922fc}</Project>
+      <Name>GalaxyUI</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

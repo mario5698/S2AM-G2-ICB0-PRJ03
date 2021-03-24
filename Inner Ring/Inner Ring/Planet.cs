@@ -15,19 +15,85 @@ using System.Windows.Forms;
 using AccesoDades;
 using System.Net.Sockets;
 using System.Net;
-
+using GalaxyUI;
 
 namespace Inner_Ring
 {
     public partial class Planet : Form
     {
+        int numeroTema;
+        ThemeName nombreTema;
+        Random rngx = new Random();
+        GalaxyTheme tema = new GalaxyTheme();
+        string text;
 
         public Planet()
         {
             InitializeComponent();
             ObtenerPlanetas();
+            AsignarTema();
+            AsignarFunciones();
         }
-          
+
+        private void AsignarTema()
+        {
+            numeroTema = rngx.Next(1, 4);
+            numeroTema = 1;
+            if (numeroTema == 1) { nombreTema = ThemeName.Vitruvian; }
+            else if (numeroTema == 2) { nombreTema = ThemeName.Fortuna; }
+            else { nombreTema = ThemeName.Igni; }
+
+            BackgroundImage = tema.ObtenerFondo(numeroTema);
+
+
+            foreach (Control c in Controls)
+            {
+                if (c is Label)
+                {
+                    c.ForeColor = tema.ObtenerColor(nombreTema, false);
+                }
+
+                if (c is GalaxyButton)
+                {
+                    var button = (GalaxyButton)c;
+                    button.Tema = nombreTema;
+                }
+                else if (c is GalaxyTextBox)
+                {
+                    var text = (GalaxyTextBox)c;
+                    text.Tema = nombreTema;
+                }
+                else if (c is GalaxyPanel)
+                {
+                    var panel = (GalaxyPanel)c;
+                    panel.Tema = nombreTema;
+                }
+            }
+        }
+
+
+        private void AsignarFunciones()
+        {
+            btnCreateCodification.label.Click += CreateCodification;
+            btnCreateCodification.pictureBox.Click += CreateCodification;
+
+            btnInsert.label.Click += Insert;
+            btnInsert.pictureBox.Click += Insert;
+
+            btnConnect.label.Click += Connect;
+            btnConnect.pictureBox.Click += Connect;
+
+            btnRSA.label.Click += RSA;
+            btnRSA.pictureBox.Click += RSA;
+
+            btnGenerate.label.Click += Generate;
+            btnGenerate.pictureBox.Click += Generate;
+
+            btnCompare.label.Click += Compare;
+            btnCompare.pictureBox.Click += Compare;
+        }
+
+
         #region RSA
 
         public byte[] datosEncriptados;
@@ -359,7 +425,7 @@ namespace Inner_Ring
         }
 
 
-        private void button1_Click(object sender, EventArgs e)
+        private void CreateCodification(object sender, EventArgs e)
         {
             GenerarDic();
             code = "";
@@ -527,6 +593,7 @@ namespace Inner_Ring
             planets = Acc.PortarPerConsulta("select * from Planets");
             idinn = Acc.PortarPerConsulta("select * from innerencryption where idplanet = " + idpla).Tables[0].Rows[0]["idinnerencryption"].ToString();
             DataSet infotabla = Acc.PortarTaula("InnerEncryptionData");
+            string query = "Select * from InnerEncryptionData";
             DataRow row = null;
             for (char i = 'A'; i <= 'Z'; i++)
             {
@@ -536,21 +603,22 @@ namespace Inner_Ring
                 row["numbers"] = dic[i.ToString()];
                 infotabla.Tables[0].Rows.Add(row);
             }
-            Acc.Actualitzar(infotabla);
+            Acc.Actualitzar(infotabla, query);
         }
 
         private void Insert_Encryption()
         {
             DataSet infotabla = Acc.PortarTaula("InnerEncryption");
             DataRow row;
+            string query = "select * from InnerEncryption";
             row = infotabla.Tables[0].NewRow();
             row["idPlanet"] = idpla;
             row["ValidationCode"] = code;
             infotabla.Tables[0].Rows.Add(row);
-            Acc.Actualitzar(infotabla);
+            Acc.Actualitzar(infotabla, query);
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void Generate(object sender, EventArgs e)
         {
             comprimit = new Thread(ComprimirFitxers);
             fitxers = new Thread(GenerarFitxers);
@@ -570,19 +638,78 @@ namespace Inner_Ring
             { }
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void Compare(object sender, EventArgs e)
         {
             MessageBox.Show(CompararHash().ToString());
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Insert(object sender, EventArgs e)
         {
             DeleteData();
             Insert_Encryption();
             Insert_EncryptionData();
         }
 
-        private void button3_Click_1(object sender, EventArgs e)
+        private void galaxyPanel1_Load(object sender, EventArgs e)
+        {
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRSA_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnConnect_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnGenerate_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCompare_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbx_Missatges_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void galaxyPanel2_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnInsert_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCreateCodification_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Connect(object sender, EventArgs e)
         {
             idpla = Acc.PortarPerConsulta("select * from planets where idplanet = '" + comboBox1.SelectedValue + "'").Tables[0].Rows[0]["idplanet"].ToString();
             planetSelected = planets.Tables[0].Select("IdPlanet=" + comboBox1.SelectedValue);
@@ -595,10 +722,11 @@ namespace Inner_Ring
             T.Start();
         }
 
-        private void button7_Click(object sender, EventArgs e)
+        private void RSA(object sender, EventArgs e)
         {
             IniciarRSA();
         }
+
         public void StartReceiving()
         {
             ReceiveTCP(int.Parse(planetSelected[0]["portplanet1"].ToString()));
@@ -663,30 +791,6 @@ namespace Inner_Ring
 
         }
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-            planetSelected = planets.Tables[0].Select("IdPlanet=" + comboBox1.SelectedValue);
-            portPlanetSelected = planetSelected[0]["portplanet"].ToString();
-            try
-            {
-                dades = Encoding.ASCII.GetBytes(txb_message.Text);
-                client = new TcpClient(txb_ip.Text, Int32.Parse(txb_portS.Text));
-                ns = client.GetStream();
-                byte[] nouBuffer = Encoding.ASCII.GetBytes(txb_message.Text);
-                ns.Write(nouBuffer, 0, nouBuffer.Length);
-                ns.Close();
-                client.Close();
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Error al intentarse conectar al puerto");
-            }
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-        }
-
         #endregion
 
         #region RSAFunciones
@@ -707,7 +811,8 @@ namespace Inner_Ring
             row["idPlanet"] = comboBox1.SelectedValue;
             row["xmlkey"] = llavePublica;
             pKey.Tables[0].Rows.Add(row);
-            Acc.Actualitzar(pKey);
+            string query = "Select * from planetkeys";
+            Acc.Actualitzar(pKey, query);
         }
 
         private byte[] Encriptar(string texto)

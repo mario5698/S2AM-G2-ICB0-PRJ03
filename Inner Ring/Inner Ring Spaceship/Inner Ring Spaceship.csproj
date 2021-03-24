@@ -96,6 +96,10 @@
       <Project>{7ef7eaf2-d966-4f20-a306-a76267b5a31f}</Project>
       <Name>AccesoDades</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GalaxyUI\GalaxyUI.csproj">
+      <Project>{b08709a7-9e0a-412e-9bc9-34befe3922fc}</Project>
+      <Name>GalaxyUI</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Eclipse-3.3s-200px %281%29.gif" />

@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B08709A7-9E0A-412E-9BC9-34BEFE3922FC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>GalaxyUI</RootNamespace>
+    <AssemblyName>GalaxyUI</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="GalaxyButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GalaxyButton.Designer.cs">
+      <DependentUpon>GalaxyButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GalaxyPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GalaxyPanel.Designer.cs">
+      <DependentUpon>GalaxyPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GalaxyTextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GalaxyTextBox.Designer.cs">
+      <DependentUpon>GalaxyTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Theme.cs" />
+    <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="GalaxyButton.resx">
+      <DependentUpon>GalaxyButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GalaxyPanel.resx">
+      <DependentUpon>GalaxyPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GalaxyTextBox.resx">
+      <DependentUpon>GalaxyTextBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\text_1a.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\text_1A.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\text_1B.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\line_1A.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\line_1B.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\line_2A.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\line_2B.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\line_3A.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\line_3B.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\text_2A.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\text_2B.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\text_3A.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\text_3B.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\panel_1A.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\panel_1B.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\panel_2A.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\panel_2B.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\panel_3A.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\panel_3B.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bg_1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bg_2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bg_3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\panel_1A1.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

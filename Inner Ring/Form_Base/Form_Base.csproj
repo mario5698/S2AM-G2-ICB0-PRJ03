@@ -61,10 +61,6 @@
       <Project>{7ef7eaf2-d966-4f20-a306-a76267b5a31f}</Project>
       <Name>AccesoDades</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Acceso_Dades\Acceso_Dades\Acceso_Dades.csproj">
-      <Project>{cff4959d-dc40-4103-855d-b5f76864326e}</Project>
-      <Name>Acceso_Dades</Name>
-    </ProjectReference>
     <ProjectReference Include="..\BlibliotecaG2\BibliotecaG2.csproj">
       <Project>{67032f4e-7f9b-4f43-84b5-82c737a1573a}</Project>
       <Name>BibliotecaG2</Name>
@@ -72,6 +68,10 @@
     <ProjectReference Include="..\Controles_Usuario\Controles_Usuario.csproj">
       <Project>{49db4e3f-ea22-4fd4-91f8-d99c5eee9126}</Project>
       <Name>Controles_Usuario</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GalaxyUI\GalaxyUI.csproj">
+      <Project>{B08709A7-9E0A-412E-9BC9-34BEFE3922FC}</Project>
+      <Name>GalaxyUI</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inner Ring Planet", "Inner Ring\Inner Ring Planet.csproj", "{AAED00D0-62AF-43B6-81A3-99F4B16D6AE7}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inner Ring Spaceship", "Inner Ring Spaceship\Inner Ring Spaceship.csproj", "{D5BC2B5F-A581-490C-9E7B-13381345FC9A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccesoDades", "Acceso_Dades\AccesoDades.csproj", "{7EF7EAF2-D966-4F20-A306-A76267B5A31F}"
@@ -17,16 +15,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BibliotecaG2", "Bliblioteca
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controles_Usuario", "Controles_Usuario\Controles_Usuario.csproj", "{49DB4E3F-EA22-4FD4-91F8-D99C5EEE9126}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GalaxyUI", "GalaxyUI\GalaxyUI.csproj", "{B08709A7-9E0A-412E-9BC9-34BEFE3922FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inner Ring Planet", "Inner Ring Planet\Inner Ring Planet.csproj", "{D2DC9BB5-2B02-4FFF-95A6-7070D06460E9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{AAED00D0-62AF-43B6-81A3-99F4B16D6AE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AAED00D0-62AF-43B6-81A3-99F4B16D6AE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AAED00D0-62AF-43B6-81A3-99F4B16D6AE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AAED00D0-62AF-43B6-81A3-99F4B16D6AE7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D5BC2B5F-A581-490C-9E7B-13381345FC9A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D5BC2B5F-A581-490C-9E7B-13381345FC9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5BC2B5F-A581-490C-9E7B-13381345FC9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -51,6 +49,14 @@ Global
 		{49DB4E3F-EA22-4FD4-91F8-D99C5EEE9126}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{49DB4E3F-EA22-4FD4-91F8-D99C5EEE9126}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{49DB4E3F-EA22-4FD4-91F8-D99C5EEE9126}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B08709A7-9E0A-412E-9BC9-34BEFE3922FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B08709A7-9E0A-412E-9BC9-34BEFE3922FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B08709A7-9E0A-412E-9BC9-34BEFE3922FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B08709A7-9E0A-412E-9BC9-34BEFE3922FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2DC9BB5-2B02-4FFF-95A6-7070D06460E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2DC9BB5-2B02-4FFF-95A6-7070D06460E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2DC9BB5-2B02-4FFF-95A6-7070D06460E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2DC9BB5-2B02-4FFF-95A6-7070D06460E9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

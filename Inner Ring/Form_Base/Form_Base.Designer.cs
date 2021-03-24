@@ -112,7 +112,7 @@
             this.dtgUsers.DefaultCellStyle = dataGridViewCellStyle2;
             this.dtgUsers.EnableHeadersVisualStyles = false;
             this.dtgUsers.GridColor = System.Drawing.Color.PaleGreen;
-            this.dtgUsers.Location = new System.Drawing.Point(22, 599);
+            this.dtgUsers.Location = new System.Drawing.Point(22, 581);
             this.dtgUsers.Name = "dtgUsers";
             this.dtgUsers.ReadOnly = true;
             this.dtgUsers.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -129,7 +129,7 @@
             dataGridViewCellStyle4.ForeColor = System.Drawing.Color.PaleGreen;
             this.dtgUsers.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dtgUsers.RowTemplate.Height = 28;
-            this.dtgUsers.Size = new System.Drawing.Size(1195, 187);
+            this.dtgUsers.Size = new System.Drawing.Size(1195, 205);
             this.dtgUsers.TabIndex = 93;
             this.dtgUsers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgUsers_CellContentClick);
             this.dtgUsers.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgUsers_CellEnter);

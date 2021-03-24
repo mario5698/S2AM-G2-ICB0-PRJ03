@@ -22,8 +22,6 @@ namespace SpaceManager
             InitializeComponent();
         }
 
-
-
         private void ShowForms(Form myForm)
         {
             pnl_data.Controls.Clear();
