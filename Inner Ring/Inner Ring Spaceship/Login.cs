@@ -37,16 +37,16 @@ namespace Inner_Ring_Spaceship
             }
         }
 
-        private void checkCode(string codeSpaceshìp)
+        private void checkCode(string codeSpaceship)
         {
             try
             {
                 DataSet spaceship;
-                spaceship = Acc.PortarPerConsulta("select * from SpaceShips where CodeSpaceShip = "+"'"+codeSpaceshìp+"'");
+                spaceship = Acc.PortarPerConsulta("select * from SpaceShips where CodeSpaceShip = '"+ codeSpaceship + "'");
                 int existe = spaceship.Tables[0].Rows.Count;
                 if (existe > 0)
                 {
-                    openForm(codeSpaceshìp);
+                    openForm(codeSpaceship);
                 }
                 else
                 {
@@ -67,6 +67,11 @@ namespace Inner_Ring_Spaceship
             Spaceship space = new Spaceship(codeSpaceship);
             space.Show();
             this.Hide();
+        }
+
+        private void txt_CodeSpaceship_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

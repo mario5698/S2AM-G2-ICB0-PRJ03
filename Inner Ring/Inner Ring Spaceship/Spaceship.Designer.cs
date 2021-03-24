@@ -30,11 +30,9 @@ namespace Inner_Ring_Spaceship
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.GetInfoPlanet = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.lbx_Missatges = new System.Windows.Forms.ListBox();
-            this.btn_listener_Desc = new System.Windows.Forms.Button();
             this.btn_listener_Conect = new System.Windows.Forms.Button();
             this.btn_SendPac = new System.Windows.Forms.Button();
             this.lbl_GetFIleComplete = new System.Windows.Forms.Label();
@@ -47,30 +45,21 @@ namespace Inner_Ring_Spaceship
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btn_conect_planet = new GalaxyUI.GalaxyButton();
+            this.btn_send_file = new GalaxyUI.GalaxyButton();
+            this.btn_disc = new GalaxyUI.GalaxyButton();
+            this.btn_start = new GalaxyUI.GalaxyButton();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F);
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(436, 242);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(280, 55);
-            this.comboBox2.TabIndex = 1;
             // 
             // GetInfoPlanet
             // 
-            this.GetInfoPlanet.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.GetInfoPlanet.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F);
-            this.GetInfoPlanet.Location = new System.Drawing.Point(759, 222);
-            this.GetInfoPlanet.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.GetInfoPlanet.Location = new System.Drawing.Point(0, 0);
             this.GetInfoPlanet.Name = "GetInfoPlanet";
-            this.GetInfoPlanet.Size = new System.Drawing.Size(213, 69);
-            this.GetInfoPlanet.TabIndex = 2;
-            this.GetInfoPlanet.Text = "get ip and port planet selected";
-            this.GetInfoPlanet.UseVisualStyleBackColor = false;
-            this.GetInfoPlanet.Click += new System.EventHandler(this.GetInfoPlanet_Click);
+            this.GetInfoPlanet.Size = new System.Drawing.Size(75, 23);
+            this.GetInfoPlanet.TabIndex = 39;
             // 
             // contextMenuStrip1
             // 
@@ -82,69 +71,41 @@ namespace Inner_Ring_Spaceship
             // 
             this.lbx_Missatges.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbx_Missatges.FormattingEnabled = true;
-            this.lbx_Missatges.ItemHeight = 47;
-            this.lbx_Missatges.Location = new System.Drawing.Point(72, 493);
-            this.lbx_Missatges.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.lbx_Missatges.ItemHeight = 31;
+            this.lbx_Missatges.Location = new System.Drawing.Point(48, 320);
             this.lbx_Missatges.Name = "lbx_Missatges";
-            this.lbx_Missatges.Size = new System.Drawing.Size(730, 521);
+            this.lbx_Missatges.Size = new System.Drawing.Size(488, 314);
             this.lbx_Missatges.TabIndex = 13;
-            // 
-            // btn_listener_Desc
-            // 
-            this.btn_listener_Desc.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.btn_listener_Desc.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_listener_Desc.Location = new System.Drawing.Point(1460, 480);
-            this.btn_listener_Desc.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btn_listener_Desc.Name = "btn_listener_Desc";
-            this.btn_listener_Desc.Size = new System.Drawing.Size(339, 126);
-            this.btn_listener_Desc.TabIndex = 14;
-            this.btn_listener_Desc.Text = "Disconect Listener";
-            this.btn_listener_Desc.UseVisualStyleBackColor = false;
-            this.btn_listener_Desc.Click += new System.EventHandler(this.btn_listener_Desc_Click);
             // 
             // btn_listener_Conect
             // 
-            this.btn_listener_Conect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.btn_listener_Conect.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_listener_Conect.Location = new System.Drawing.Point(1066, 480);
-            this.btn_listener_Conect.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_listener_Conect.Location = new System.Drawing.Point(0, 0);
             this.btn_listener_Conect.Name = "btn_listener_Conect";
-            this.btn_listener_Conect.Size = new System.Drawing.Size(333, 126);
-            this.btn_listener_Conect.TabIndex = 16;
-            this.btn_listener_Conect.Text = "Start Listener";
-            this.btn_listener_Conect.UseVisualStyleBackColor = false;
-            this.btn_listener_Conect.Click += new System.EventHandler(this.btn_listener_Conect_Click);
+            this.btn_listener_Conect.Size = new System.Drawing.Size(75, 23);
+            this.btn_listener_Conect.TabIndex = 35;
             // 
             // btn_SendPac
             // 
-            this.btn_SendPac.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.btn_SendPac.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F);
-            this.btn_SendPac.Location = new System.Drawing.Point(776, 377);
-            this.btn_SendPac.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btn_SendPac.Location = new System.Drawing.Point(0, 0);
             this.btn_SendPac.Name = "btn_SendPac";
-            this.btn_SendPac.Size = new System.Drawing.Size(213, 80);
-            this.btn_SendPac.TabIndex = 18;
-            this.btn_SendPac.Text = "Send File PAC";
-            this.btn_SendPac.UseVisualStyleBackColor = false;
-            this.btn_SendPac.Click += new System.EventHandler(this.btn_SendPac_Click);
+            this.btn_SendPac.Size = new System.Drawing.Size(75, 23);
+            this.btn_SendPac.TabIndex = 38;
             // 
             // lbl_GetFIleComplete
             // 
             this.lbl_GetFIleComplete.AutoSize = true;
-            this.lbl_GetFIleComplete.Location = new System.Drawing.Point(342, 403);
-            this.lbl_GetFIleComplete.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_GetFIleComplete.Location = new System.Drawing.Point(228, 262);
             this.lbl_GetFIleComplete.Name = "lbl_GetFIleComplete";
-            this.lbl_GetFIleComplete.Size = new System.Drawing.Size(0, 20);
+            this.lbl_GetFIleComplete.Size = new System.Drawing.Size(0, 13);
             this.lbl_GetFIleComplete.TabIndex = 19;
             // 
             // lbl_Ip
             // 
             this.lbl_Ip.AutoSize = true;
             this.lbl_Ip.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Ip.Location = new System.Drawing.Point(1467, 238);
-            this.lbl_Ip.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_Ip.Location = new System.Drawing.Point(1318, 144);
             this.lbl_Ip.Name = "lbl_Ip";
-            this.lbl_Ip.Size = new System.Drawing.Size(120, 47);
+            this.lbl_Ip.Size = new System.Drawing.Size(79, 31);
             this.lbl_Ip.TabIndex = 20;
             this.lbl_Ip.Text = "lbl_Ip";
             // 
@@ -152,10 +113,9 @@ namespace Inner_Ring_Spaceship
             // 
             this.lbl_Code.AutoSize = true;
             this.lbl_Code.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Code.Location = new System.Drawing.Point(1470, 82);
-            this.lbl_Code.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_Code.Location = new System.Drawing.Point(1320, 42);
             this.lbl_Code.Name = "lbl_Code";
-            this.lbl_Code.Size = new System.Drawing.Size(176, 47);
+            this.lbl_Code.Size = new System.Drawing.Size(115, 31);
             this.lbl_Code.TabIndex = 21;
             this.lbl_Code.Text = "lbl_code";
             // 
@@ -163,10 +123,9 @@ namespace Inner_Ring_Spaceship
             // 
             this.lbl_Port.AutoSize = true;
             this.lbl_Port.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Port.Location = new System.Drawing.Point(1467, 322);
-            this.lbl_Port.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_Port.Location = new System.Drawing.Point(1318, 198);
             this.lbl_Port.Name = "lbl_Port";
-            this.lbl_Port.Size = new System.Drawing.Size(161, 47);
+            this.lbl_Port.Size = new System.Drawing.Size(106, 31);
             this.lbl_Port.TabIndex = 22;
             this.lbl_Port.Text = "lbl_Port";
             // 
@@ -174,10 +133,9 @@ namespace Inner_Ring_Spaceship
             // 
             this.lbl_Port1.AutoSize = true;
             this.lbl_Port1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Port1.Location = new System.Drawing.Point(1654, 322);
-            this.lbl_Port1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_Port1.Location = new System.Drawing.Point(1443, 198);
             this.lbl_Port1.Name = "lbl_Port1";
-            this.lbl_Port1.Size = new System.Drawing.Size(184, 47);
+            this.lbl_Port1.Size = new System.Drawing.Size(121, 31);
             this.lbl_Port1.TabIndex = 25;
             this.lbl_Port1.Text = "lbl_Port1";
             // 
@@ -185,10 +143,9 @@ namespace Inner_Ring_Spaceship
             // 
             this.lbl_Type.AutoSize = true;
             this.lbl_Type.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_Type.Location = new System.Drawing.Point(1470, 155);
-            this.lbl_Type.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbl_Type.Location = new System.Drawing.Point(1320, 90);
             this.lbl_Type.Name = "lbl_Type";
-            this.lbl_Type.Size = new System.Drawing.Size(178, 47);
+            this.lbl_Type.Size = new System.Drawing.Size(117, 31);
             this.lbl_Type.TabIndex = 26;
             this.lbl_Type.Text = "lbl_Type";
             // 
@@ -196,10 +153,9 @@ namespace Inner_Ring_Spaceship
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(1058, 82);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(1045, 42);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(324, 47);
+            this.label1.Size = new System.Drawing.Size(213, 31);
             this.label1.TabIndex = 27;
             this.label1.Text = "Code Spaceship";
             // 
@@ -207,10 +163,9 @@ namespace Inner_Ring_Spaceship
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(1058, 238);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(1045, 144);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(263, 47);
+            this.label2.Size = new System.Drawing.Size(174, 31);
             this.label2.TabIndex = 28;
             this.label2.Text = "Spaceship IP";
             // 
@@ -218,10 +173,9 @@ namespace Inner_Ring_Spaceship
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(1058, 322);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(1045, 198);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(346, 47);
+            this.label3.Size = new System.Drawing.Size(228, 31);
             this.label3.TabIndex = 29;
             this.label3.Text = "Spaceship Port`s ";
             // 
@@ -229,19 +183,90 @@ namespace Inner_Ring_Spaceship
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(1058, 155);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(1045, 90);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(317, 47);
+            this.label4.Size = new System.Drawing.Size(209, 31);
             this.label4.TabIndex = 30;
             this.label4.Text = "Type Spaceship";
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(48, 90);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(488, 150);
+            this.dataGridView1.TabIndex = 31;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(311, 24);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 32;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btn_conect_planet
+            // 
+            this.btn_conect_planet.BackColor = System.Drawing.Color.Transparent;
+            this.btn_conect_planet.Location = new System.Drawing.Point(651, 41);
+            this.btn_conect_planet.Name = "btn_conect_planet";
+            this.btn_conect_planet.Size = new System.Drawing.Size(376, 80);
+            this.btn_conect_planet.TabIndex = 37;
+            this.btn_conect_planet.Tema = GalaxyUI.ThemeName.Fortuna;
+            this.btn_conect_planet.Texto = "Connect Planet";
+            // 
+            // btn_send_file
+            // 
+            this.btn_send_file.BackColor = System.Drawing.Color.Transparent;
+            this.btn_send_file.Location = new System.Drawing.Point(651, 223);
+            this.btn_send_file.Name = "btn_send_file";
+            this.btn_send_file.Size = new System.Drawing.Size(376, 80);
+            this.btn_send_file.TabIndex = 36;
+            this.btn_send_file.Tema = GalaxyUI.ThemeName.Igni;
+            this.btn_send_file.Texto = "Send File";
+            // 
+            // btn_disc
+            // 
+            this.btn_disc.BackColor = System.Drawing.Color.Transparent;
+            this.btn_disc.Location = new System.Drawing.Point(1063, 321);
+            this.btn_disc.Name = "btn_disc";
+            this.btn_disc.Size = new System.Drawing.Size(376, 80);
+            this.btn_disc.TabIndex = 34;
+            this.btn_disc.Tema = GalaxyUI.ThemeName.Vitruvian;
+            this.btn_disc.Texto = "DIsconnect ";
+            this.btn_disc.Click += new System.EventHandler(this.galaxyButton2_Click);
+            // 
+            // btn_start
+            // 
+            this.btn_start.BackColor = System.Drawing.Color.Transparent;
+            this.btn_start.Location = new System.Drawing.Point(633, 321);
+            this.btn_start.Name = "btn_start";
+            this.btn_start.Size = new System.Drawing.Size(376, 80);
+            this.btn_start.TabIndex = 33;
+            this.btn_start.Tema = GalaxyUI.ThemeName.Vitruvian;
+            this.btn_start.Texto = "Connect";
+            this.btn_start.Click += new System.EventHandler(this.galaxyButton1_Click);
+            // 
             // Spaceship
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(40)))), ((int)(((byte)(50)))));
-            this.ClientSize = new System.Drawing.Size(1924, 1050);
+            this.ClientSize = new System.Drawing.Size(1671, 735);
+            this.Controls.Add(this.btn_conect_planet);
+            this.Controls.Add(this.btn_send_file);
+            this.Controls.Add(this.lbx_Missatges);
+            this.Controls.Add(this.btn_disc);
+            this.Controls.Add(this.btn_start);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -254,29 +279,23 @@ namespace Inner_Ring_Spaceship
             this.Controls.Add(this.lbl_GetFIleComplete);
             this.Controls.Add(this.btn_SendPac);
             this.Controls.Add(this.btn_listener_Conect);
-            this.Controls.Add(this.btn_listener_Desc);
-            this.Controls.Add(this.lbx_Missatges);
             this.Controls.Add(this.GetInfoPlanet);
-            this.Controls.Add(this.comboBox2);
             this.ForeColor = System.Drawing.Color.PaleGreen;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Spaceship";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Spaceship_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Button GetInfoPlanet;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ListBox lbx_Missatges;
-        private System.Windows.Forms.Button btn_listener_Desc;
         private System.Windows.Forms.Button btn_listener_Conect;
         private System.Windows.Forms.Button btn_SendPac;
         private System.Windows.Forms.Label lbl_GetFIleComplete;
@@ -289,6 +308,12 @@ namespace Inner_Ring_Spaceship
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button button1;
+        private GalaxyUI.GalaxyButton btn_start;
+        private GalaxyUI.GalaxyButton btn_disc;
+        private GalaxyUI.GalaxyButton btn_send_file;
+        private GalaxyUI.GalaxyButton btn_conect_planet;
     }
 }
 

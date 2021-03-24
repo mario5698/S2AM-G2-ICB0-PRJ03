@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using AccesoDades;
+using GalaxyUI;
 
 namespace Inner_Ring_Spaceship
 {
@@ -49,6 +50,7 @@ namespace Inner_Ring_Spaceship
         string Spaceshiptype;
 
         //delivery data
+        DataTable infoDelivery;
         string deliveryCode;
         // bool exist=false; 
         //control
@@ -64,14 +66,87 @@ namespace Inner_Ring_Spaceship
         static string enviar = Application.StartupPath + "\\fitxers\\PACTOTAL.txt";
         //decompress
         string documents = "";
+        string[] head= new string[6] { "id", "descSec", "descPla", "lat", "long", "codeDelivery" };
 
+        int numeroTema;
+        ThemeName nombreTema;
+        Random rngx = new Random();
+        GalaxyTheme tema = new GalaxyTheme();
 
         public Spaceship(string spaceshipCode)
         {
             InitializeComponent();
-            getAllPlanets();
+            AsignarTema();
+            AsignarFunciones();
+            getAllPlanetsToDelivery(spaceshipCode);
             getSpaceshipData(spaceshipCode);
             CleanDir(saveFolder);
+            Dtg_header();
+        }
+
+
+        private void AsignarFunciones()
+
+        {
+            btn_start.label.Click += activateListener;
+            btn_start.pictureBox.Click += activateListener;
+
+            btn_disc.label.Click += listenerDisconected;
+            btn_disc.pictureBox.Click += listenerDisconected;
+
+            btn_conect_planet.label.Click += getInfoPlanet;
+            btn_conect_planet.pictureBox.Click += getInfoPlanet;
+
+            btn_send_file.label.Click += send_Pac;
+            btn_send_file.pictureBox.Click += send_Pac;
+        
+        }
+        private void AsignarTema()
+        {
+            numeroTema = rngx.Next(1, 4);
+            numeroTema = 1;
+            if (numeroTema == 1) { nombreTema = ThemeName.Vitruvian; }
+            else if (numeroTema == 2) { nombreTema = ThemeName.Fortuna; }
+            else { nombreTema = ThemeName.Igni; }
+
+            BackgroundImage = tema.ObtenerFondo(numeroTema);
+
+
+            foreach (Control c in Controls)
+            {
+                if (c is Label)
+                {
+                    c.ForeColor = tema.ObtenerColor(nombreTema, false);
+                }
+
+                if (c is GalaxyButton)
+                {
+                    var button = (GalaxyButton)c;
+                    button.Tema = nombreTema;
+                }
+                else if (c is GalaxyTextBox)
+                {
+                    var text = (GalaxyTextBox)c;
+                    text.Tema = nombreTema;
+                }
+                else if (c is GalaxyPanel)
+                {
+                    var panel = (GalaxyPanel)c;
+                    panel.Tema = nombreTema;
+                }
+            }
+        }
+
+        private void Dtg_header()
+        {
+            for (int i = 0; i < head.Length; i++)
+            {
+                dataGridView1.Columns[i].HeaderText = head[i].ToString();
+            }
+        }
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
         }
         private void getSpaceshipData(string spaceshipCode)
         {
@@ -123,21 +198,26 @@ namespace Inner_Ring_Spaceship
 
 
         #region Obtener Planetas, naves, Info Planetas, Codigo Envio
-        private void getAllPlanets()
+        private void getAllPlanetsToDelivery(string spaceshipCode)
         {
+            string query = "select  p.idPlanet, sec.DescSector,p.DescPlanet,  p.lat, p.long , d.CodeDelivery   from  SpaceShips s " +
+                "left join  DeliveryData d on s.idSpaceShip = d.idSpaceShip left join  planets p on d.idplanet = p.idPlanet " +
+                "left join sectors sec on p.idSector = sec.idSector  where s.CodeSpaceShip =  '" + spaceshipCode + "'";
+
             spaceShip = Acc.PortarPerConsulta("select * from SpaceShips");
-            planets = Acc.PortarPerConsulta("select * from Planets");
-            for (int i = 0; i < planets.Tables.Count; i++)
-            {
-                comboBox2.DataSource = planets.Tables[0];
-                comboBox2.DisplayMember = "DescPlanet";
-                comboBox2.ValueMember = "idPlanet";
-            }
+            planets = Acc.PortarPerConsulta(query);
+       
+            infoDelivery = planets.Tables[0];
+            dataGridView1.DataSource = infoDelivery;
+         //   dataGridView1.Columns["id"].Visible = false;
         }
 
-        private void GetInfoPlanet_Click(object sender, EventArgs e)
+        
+
+        private void getInfoPlanet(object sender, EventArgs e)
         {
-            DataRow[] planetSelected = planets.Tables[0].Select("IdPlanet=" + comboBox2.SelectedValue);
+            //cambiar combox por index datagridview
+            DataRow[] planetSelected = planets.Tables[0].Select("IdPlanet=" + dataGridView1.Rows[1]);
             idPlanetSelected = planetSelected[0]["idplanet"].ToString();
             ipPlanetSelected = planetSelected[0]["ipplanet"].ToString();
             portPlanetSelected = planetSelected[0]["portplanet"].ToString();
@@ -539,7 +619,8 @@ namespace Inner_Ring_Spaceship
         }
         #endregion
 
-        private void btn_SendPac_Click(object sender, EventArgs e)
+     
+        private void send_Pac(object sender, EventArgs e)
         {
             if (File.Exists(enviar))
             {
@@ -552,8 +633,21 @@ namespace Inner_Ring_Spaceship
             }
         }
 
-        private void btn_listener_Conect_Click(object sender, EventArgs e)
+        private void activateListener(object sender, EventArgs e)
         {
+            try
+            {
+                createThreadToListener();
+                createThreadToCompressed();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("listener button connect ");
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void listenerDisconected(object sender, EventArgs e) {
             try
             {
                 createThreadToListener();
@@ -570,6 +664,39 @@ namespace Inner_Ring_Spaceship
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(dataGridView1.SelectedCells[0].Value.ToString());
+        }
+
+      
+        private void galaxyButton1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                createThreadToListener();
+                createThreadToCompressed();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("listener button connect ");
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void galaxyButton2_Click(object sender, EventArgs e)
+        {
+            ListenerRecieveMessage.Stop();
+            ListenerRecieveCompressed.Stop();
+            hilo1.Abort();
+            //  hilo2.Abort();
+            listenerRecieveStart = false;
+            // listenerCompressedStart = false;
+            lbx_Missatges.Items.Clear();
+        }
+
+      
 
         private void btn_listener_Desc_Click(object sender, EventArgs e)
         {

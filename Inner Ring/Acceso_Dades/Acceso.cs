@@ -20,7 +20,7 @@ namespace AccesoDades
 
             connectionString = ConfigurationManager.ConnectionStrings["Acceso"].ConnectionString;
 
-            connectionString = ConfigurationManager.ConnectionStrings[acceso].ConnectionString;
+           // connectionString = ConfigurationManager.ConnectionStrings[acceso].ConnectionString;
 
         }
 
