@@ -38,7 +38,7 @@ namespace Inner_Ring
         private void AsignarTema()
         {
             numeroTema = rngx.Next(1, 4);
-            numeroTema = 1;
+            //numeroTema = 1;
             if (numeroTema == 1) { nombreTema = ThemeName.Vitruvian; }
             else if (numeroTema == 2) { nombreTema = ThemeName.Fortuna; }
             else { nombreTema = ThemeName.Igni; }

@@ -21,7 +21,6 @@ C:\Users\Miguel\Desktop\GitHub\S2AM-G2-ICB0-PRJ03\Inner Ring\GalaxyUI\obj\Debug\
 C:\Users\Miguel\Desktop\GitHub\S2AM-G2-ICB0-PRJ03\Inner Ring\GalaxyUI\obj\Debug\GalaxyUI.pdb
 C:\Users\Mario\Desktop\Github\G2Team\S2AM-G2-ICB0-PRJ03\Inner Ring\GalaxyUI\bin\Debug\GalaxyUI.dll
 C:\Users\Mario\Desktop\Github\G2Team\S2AM-G2-ICB0-PRJ03\Inner Ring\GalaxyUI\bin\Debug\GalaxyUI.pdb
-C:\Users\Mario\Desktop\Github\G2Team\S2AM-G2-ICB0-PRJ03\Inner Ring\GalaxyUI\obj\Debug\GalaxyUI.csprojAssemblyReference.cache
 C:\Users\Mario\Desktop\Github\G2Team\S2AM-G2-ICB0-PRJ03\Inner Ring\GalaxyUI\obj\Debug\GalaxyUI.GalaxyButton.resources
 C:\Users\Mario\Desktop\Github\G2Team\S2AM-G2-ICB0-PRJ03\Inner Ring\GalaxyUI\obj\Debug\GalaxyUI.GalaxyPanel.resources
 C:\Users\Mario\Desktop\Github\G2Team\S2AM-G2-ICB0-PRJ03\Inner Ring\GalaxyUI\obj\Debug\GalaxyUI.GalaxyTextBox.resources

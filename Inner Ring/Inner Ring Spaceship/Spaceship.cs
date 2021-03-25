@@ -66,7 +66,7 @@ namespace Inner_Ring_Spaceship
         static string enviar = Application.StartupPath + "\\fitxers\\PACTOTAL.txt";
         //decompress
         string documents = "";
-        string[] head= new string[6] { "id", "descSec", "descPla", "lat", "long", "codeDelivery" };
+        string[] head= new string[6] {"id", "descSec", "descPla", "lat", "long", "codeDelivery"};
 
         int numeroTema;
         ThemeName nombreTema;
@@ -101,10 +101,11 @@ namespace Inner_Ring_Spaceship
             btn_send_file.pictureBox.Click += send_Pac;
         
         }
+
         private void AsignarTema()
         {
             numeroTema = rngx.Next(1, 4);
-            numeroTema = 1;
+            //numeroTema = 2;
             if (numeroTema == 1) { nombreTema = ThemeName.Vitruvian; }
             else if (numeroTema == 2) { nombreTema = ThemeName.Fortuna; }
             else { nombreTema = ThemeName.Igni; }
@@ -204,20 +205,20 @@ namespace Inner_Ring_Spaceship
                 "left join  DeliveryData d on s.idSpaceShip = d.idSpaceShip left join  planets p on d.idplanet = p.idPlanet " +
                 "left join sectors sec on p.idSector = sec.idSector  where s.CodeSpaceShip =  '" + spaceshipCode + "'";
 
+            DataSet deliveryPlanets = Acc.PortarPerConsulta(query);
             spaceShip = Acc.PortarPerConsulta("select * from SpaceShips");
-            planets = Acc.PortarPerConsulta(query);
+            planets = Acc.PortarPerConsulta("select * from planets");
        
-            infoDelivery = planets.Tables[0];
+            infoDelivery = deliveryPlanets.Tables[0];
             dataGridView1.DataSource = infoDelivery;
-         //   dataGridView1.Columns["id"].Visible = false;
+           dataGridView1.Columns["idplanet"].Visible = false;
         }
 
         
 
         private void getInfoPlanet(object sender, EventArgs e)
         {
-            //cambiar combox por index datagridview
-            DataRow[] planetSelected = planets.Tables[0].Select("IdPlanet=" + dataGridView1.Rows[1]);
+            DataRow[] planetSelected = planets.Tables[0].Select("IdPlanet=" + dataGridView1.SelectedCells[0].Value.ToString());
             idPlanetSelected = planetSelected[0]["idplanet"].ToString();
             ipPlanetSelected = planetSelected[0]["ipplanet"].ToString();
             portPlanetSelected = planetSelected[0]["portplanet"].ToString();
@@ -696,7 +697,10 @@ namespace Inner_Ring_Spaceship
             lbx_Missatges.Items.Clear();
         }
 
-      
+        private void btn_conect_planet_Load(object sender, EventArgs e)
+        {
+
+        }
 
         private void btn_listener_Desc_Click(object sender, EventArgs e)
         {
