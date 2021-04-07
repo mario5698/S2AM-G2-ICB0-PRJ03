@@ -132,6 +132,10 @@
       <Project>{c24f59f5-5af2-4ef5-ba01-9603f1a1310f}</Project>
       <Name>Form_Base</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GalaxyUI\GalaxyUI.csproj">
+      <Project>{B08709A7-9E0A-412E-9BC9-34BEFE3922FC}</Project>
+      <Name>GalaxyUI</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

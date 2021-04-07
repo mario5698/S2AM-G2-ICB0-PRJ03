@@ -104,10 +104,10 @@ namespace Controles_Usuario
 
         private void TXT_SWCodi_Leave(object sender, EventArgs e)
         {
-            TXT_SWDesc.BackColor = Color.PaleGreen;
-            TXT_SWDesc.ForeColor = Color.FromArgb(50, 60, 70);
-            TXT_SWCodi.BackColor = Color.PaleGreen;
-            TXT_SWCodi.ForeColor = Color.FromArgb(50, 60, 70);
+            TXT_SWDesc.BackColor = Color.White;
+            TXT_SWDesc.ForeColor = Color.Black;
+            TXT_SWCodi.BackColor = Color.White;
+            TXT_SWCodi.ForeColor = Color.Black;
 
             Acceso acc = new Acceso();
 
@@ -158,10 +158,10 @@ namespace Controles_Usuario
 
         private void TXT_SWCodi_Enter(object sender, EventArgs e)
         {
-            TXT_SWDesc.ForeColor = Color.PaleGreen;
-            TXT_SWDesc.BackColor = Color.FromArgb(50, 60, 70);
-            TXT_SWCodi.ForeColor = Color.PaleGreen;
-            TXT_SWCodi.BackColor = Color.FromArgb(50, 60, 70);
+            TXT_SWDesc.ForeColor = Color.White;
+            TXT_SWDesc.BackColor = Color.Black;
+            TXT_SWCodi.ForeColor = Color.White;
+            TXT_SWCodi.BackColor = Color.Black;
         }
 
         private void TXT_SWCodi_TextChanged(object sender, EventArgs e)

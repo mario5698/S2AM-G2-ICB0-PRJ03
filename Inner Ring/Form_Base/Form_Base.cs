@@ -35,7 +35,10 @@ namespace Form_Base
 
         private void Users_Load(object sender, EventArgs e)
         {
-
+            if (tabla == "spaceships")
+            {
+                pictureBox1.Location = new Point(pictureBox1.Location.X - 150, pictureBox1.Location.Y);
+            }
             if (DesignMode) return;
 
             obj = new Acceso();
@@ -69,8 +72,8 @@ namespace Form_Base
             {
                 if (ctr.GetType() == typeof(SWTextbox))
                 {
-                    ctr.BackColor = Color.PaleGreen;
-                    ctr.ForeColor = Color.FromArgb(50, 60, 70);
+                    ctr.BackColor = Color.White;
+                    ctr.ForeColor = Color.Black;
                     ctr.DataBindings.Clear();
                     ctr.Text = string.Empty;
                     ctr.DataBindings.Add("Text", infotabla, ((SWTextbox)ctr).Nom_BBDD.ToString());

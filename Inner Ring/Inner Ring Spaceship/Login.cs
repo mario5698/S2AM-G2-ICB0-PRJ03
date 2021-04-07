@@ -68,32 +68,32 @@ namespace Inner_Ring_Spaceship
             btn_galaxy_login.label.Click += checkCodeSpaceship;
             btn_galaxy_login.pictureBox.Click += checkCodeSpaceship;
 
-            
+
             btn_galaxy_exit.label.Click += closeForm;
             btn_galaxy_exit.pictureBox.Click += closeForm;
         }
 
-        
+
 
         private void checkCodeSpaceship(object sender, EventArgs e)
         {
             checkCode(txt_galaxi.textBox.Text);
         }
 
-       
+
         private void closeForm(object sender, EventArgs e)
         {
             this.Close();
         }
 
-      
+
 
         private void checkCode(string codeSpaceship)
         {
             try
             {
                 DataSet spaceship;
-                spaceship = Acc.PortarPerConsulta("select * from SpaceShips where CodeSpaceShip = '"+ codeSpaceship + "'");
+                spaceship = Acc.PortarPerConsulta("select * from SpaceShips where CodeSpaceShip = '" + codeSpaceship + "'");
                 int existe = spaceship.Tables[0].Rows.Count;
                 if (existe > 0)
                 {
@@ -104,7 +104,7 @@ namespace Inner_Ring_Spaceship
                     MessageBox.Show("Invalid Code");
                 }
             }
-            catch (Exception ex )
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -125,6 +125,6 @@ namespace Inner_Ring_Spaceship
             }
         }
 
-       
+
     }
 }

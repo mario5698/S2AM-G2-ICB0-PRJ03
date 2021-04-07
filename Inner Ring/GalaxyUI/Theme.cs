@@ -20,13 +20,13 @@ namespace GalaxyUI
        {
             if (activo)
             {
-                if (tema == ThemeName.Vitruvian) return Color.DodgerBlue;
+                if (tema == ThemeName.Vitruvian) return Color.FromArgb(255,197,164);
                 else if (tema == ThemeName.Fortuna) return Color.PaleGreen;
                 else return Color.FromArgb(unchecked((int)0xff88001b));
             }
             else
             {
-                if (tema == ThemeName.Vitruvian) return Color.Yellow;
+                if (tema == ThemeName.Vitruvian) return Color.FromArgb(243, 255, 143);
                 else if (tema == ThemeName.Fortuna) return Color.FromArgb(unchecked((int)0xff3f48cc));
                 else return Color.FromArgb(unchecked((int)0xff00cdcd));
             }
@@ -52,11 +52,11 @@ namespace GalaxyUI
         {
             if (index == 1)
             {
-                return new Bitmap(Properties.Resources.bg_1);
+                return new Bitmap(Properties.Resources.bg_3);
             }
             else if (index == 2)
             {
-                return new Bitmap(Properties.Resources.bg_2);
+                return new Bitmap(Properties.Resources.bg_3);
             }
             else
             {

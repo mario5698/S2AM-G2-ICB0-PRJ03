@@ -26,6 +26,8 @@ namespace Inner_Ring
         Random rngx = new Random();
         GalaxyTheme tema = new GalaxyTheme();
         string text;
+        bool listening;
+
 
         public Planet()
         {
@@ -38,7 +40,7 @@ namespace Inner_Ring
         private void AsignarTema()
         {
             numeroTema = rngx.Next(1, 4);
-            //numeroTema = 1;
+            numeroTema = 1;
             if (numeroTema == 1) { nombreTema = ThemeName.Vitruvian; }
             else if (numeroTema == 2) { nombreTema = ThemeName.Fortuna; }
             else { nombreTema = ThemeName.Igni; }
@@ -203,39 +205,40 @@ namespace Inner_Ring
                 TcpClient client = null;
                 NetworkStream netstream = null;
                 Status = string.Empty;
-                try
-                {
-                    string message = "Accept the Incoming File ";
-                    string caption = "Incoming Connection";
-                    MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-                    DialogResult result;
-
-
-                    if (Listener.Pending())
+                    try
                     {
-                        client = Listener.AcceptTcpClient();
-                        netstream = client.GetStream();
-                        Status = "Connected to a client\n";
+                        string message = "Accept the Incoming File ";
+                        string caption = "Incoming Connection";
+                        MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                        DialogResult result;
 
-                        result = MessageBox.Show(message, caption, buttons);
-                        create = saveFolder + "\\" + name;
 
-                        int totalrecbytes = 0;
-                        FileStream Fs = new FileStream(create, FileMode.OpenOrCreate, FileAccess.Write);
-                        while ((RecBytes = netstream.Read(RecData, 0, RecData.Length)) > 0)
+                        if (Listener.Pending())
                         {
-                            Fs.Write(RecData, 0, RecBytes);
-                            totalrecbytes += RecBytes;
+                            client = Listener.AcceptTcpClient();
+                            netstream = client.GetStream();
+                            Status = "Connected to a client\n";
+
+                            result = MessageBox.Show(message, caption, buttons);
+                            create = saveFolder + "\\" + name;
+
+                            int totalrecbytes = 0;
+                            FileStream Fs = new FileStream(create, FileMode.OpenOrCreate, FileAccess.Write);
+                            while ((RecBytes = netstream.Read(RecData, 0, RecData.Length)) > 0)
+                            {
+                                Fs.Write(RecData, 0, RecBytes);
+                                totalrecbytes += RecBytes;
+                            }
+                            Fs.Close();
+                            netstream.Close();
+                            client.Close();
                         }
-                        Fs.Close();
-                        netstream.Close();
-                        client.Close();
-                    }
+                    
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message);
-
+                    listBox1.Items.Add("⚠️" + ex.Message);
+                    break;
                 }
             }
         }
@@ -259,7 +262,8 @@ namespace Inner_Ring
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message);
+                listBox1.Items.Add("⚠️" + e.Message);
+
             }
             return false;
         }
@@ -345,7 +349,8 @@ namespace Inner_Ring
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message);
+                listBox1.Items.Add("⚠️" + e.Message);
+
             }
         }
 
@@ -434,36 +439,44 @@ namespace Inner_Ring
 
         public void Listen()
         {
-
             try
             {
-                Listener = new TcpListener(IPAddress.Any, Int32.Parse(portPlanetSelected));
-                Listener.Start();
-                MessageBox.Show("Conexió habilitada amb el port: " + portPlanetSelected);
-                while (conectado)
+                if (listening)
                 {
-                    if (Listener.Pending())
+                    throw new InvalidOperationException("Conexión ya establecida.");
+                }
+                else
+                {
+                    Listener = new TcpListener(IPAddress.Any, Int32.Parse(portPlanetSelected));
+                    Listener.Start();
+                    listBox1.Items.Add("✔️Conexió habilitada amb el port: " + portPlanetSelected);
+                    listening = true;
+                    while (conectado)
                     {
-                        client = Listener.AcceptTcpClient();
-                        string[] ip = client.Client.RemoteEndPoint.ToString().Split(':');
-                        ns = client.GetStream();
-                        buffer = new byte[128];
-                        int bytes = ns.Read(buffer, 0, buffer.Length);
-                        if (status < 1)
+                        if (Listener.Pending())
                         {
-                            rebut = Encoding.ASCII.GetString(buffer, 0, bytes);
-                        } else
-                        {
-                            AddLb("+ ENC --> " + Encoding.ASCII.GetString(buffer, 0, bytes));
-                            rebut = ByteConverter.GetString(Desencriptar(buffer));
+                            client = Listener.AcceptTcpClient();
+                            string[] ip = client.Client.RemoteEndPoint.ToString().Split(':');
+                            ns = client.GetStream();
+                            buffer = new byte[128];
+                            int bytes = ns.Read(buffer, 0, buffer.Length);
+                            if (status < 1)
+                            {
+                                rebut = Encoding.ASCII.GetString(buffer, 0, bytes);
+                            }
+                            else
+                            {
+                                AddLb("+ ENC --> " + Encoding.ASCII.GetString(buffer, 0, bytes));
+                                rebut = ByteConverter.GetString(Desencriptar(buffer));
+                            }
+                            AnaliseMess(rebut);
                         }
-                        AnaliseMess(rebut);
                     }
                 }
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message);
+                listBox1.Items.Add("⚠️" + e.Message);
             }
         }
 
@@ -636,7 +649,14 @@ namespace Inner_Ring
 
         private void Compare(object sender, EventArgs e)
         {
-            MessageBox.Show(CompararHash().ToString());
+            if (CompararHash())
+            {
+                listBox1.Items.Add("✔️FRIENDLY SPACESHIP✔️. ACCES ALLOWED");
+            }
+            else
+            {
+                listBox1.Items.Add("⚠️UNKNOWN SPACESHIP⚠️. ACCES DENIED.");
+            }
         }
 
         private void Insert(object sender, EventArgs e)
@@ -645,64 +665,9 @@ namespace Inner_Ring
             Insert_Encryption();
             Insert_EncryptionData();
         }
-
-        private void galaxyPanel1_Load(object sender, EventArgs e)
+        private void btn_Exit_Click(object sender, EventArgs e)
         {
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnRSA_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnConnect_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnGenerate_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnCompare_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbx_Missatges_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void galaxyPanel2_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnInsert_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnCreateCodification_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
+            Application.Exit();
         }
 
         private void Connect(object sender, EventArgs e)
@@ -742,7 +707,7 @@ namespace Inner_Ring
             }
             catch (Exception)
             {
-                MessageBox.Show("Error al intentarse conectar al puerto");
+                listBox1.Items.Add("⚠️Error al intentarse conectar al puerto.");
             }
         }
 
@@ -777,7 +742,7 @@ namespace Inner_Ring
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                listBox1.Items.Add("⚠️" + ex.Message);
             }
             finally
             {

@@ -45,11 +45,11 @@ namespace SpaceManager
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.PaleGreen;
+            this.label4.Font = new System.Drawing.Font("Trebuchet MS", 14F, System.Drawing.FontStyle.Bold);
+            this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Location = new System.Drawing.Point(193, 217);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(81, 29);
+            this.label4.Size = new System.Drawing.Size(98, 36);
             this.label4.TabIndex = 297;
             this.label4.Text = "Planet";
             // 
@@ -72,11 +72,11 @@ namespace SpaceManager
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.PaleGreen;
+            this.label3.Font = new System.Drawing.Font("Trebuchet MS", 14F, System.Drawing.FontStyle.Bold);
+            this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(111, 161);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(163, 29);
+            this.label3.Size = new System.Drawing.Size(199, 36);
             this.label3.TabIndex = 295;
             this.label3.Text = "Delivery_Date\r\n";
             // 
@@ -118,11 +118,11 @@ namespace SpaceManager
             // 
             this.lbl8.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl8.AutoSize = true;
-            this.lbl8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl8.ForeColor = System.Drawing.Color.PaleGreen;
+            this.lbl8.Font = new System.Drawing.Font("Trebuchet MS", 14F, System.Drawing.FontStyle.Bold);
+            this.lbl8.ForeColor = System.Drawing.Color.White;
             this.lbl8.Location = new System.Drawing.Point(102, 106);
             this.lbl8.Name = "lbl8";
-            this.lbl8.Size = new System.Drawing.Size(172, 29);
+            this.lbl8.Size = new System.Drawing.Size(204, 36);
             this.lbl8.TabIndex = 290;
             this.lbl8.Text = "Code_Delivery";
             // 
@@ -145,11 +145,11 @@ namespace SpaceManager
             // 
             this.lbl7.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl7.AutoSize = true;
-            this.lbl7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl7.ForeColor = System.Drawing.Color.PaleGreen;
+            this.lbl7.Font = new System.Drawing.Font("Trebuchet MS", 14F, System.Drawing.FontStyle.Bold);
+            this.lbl7.ForeColor = System.Drawing.Color.White;
             this.lbl7.Location = new System.Drawing.Point(143, 276);
             this.lbl7.Name = "lbl7";
-            this.lbl7.Size = new System.Drawing.Size(131, 29);
+            this.lbl7.Size = new System.Drawing.Size(145, 36);
             this.lbl7.TabIndex = 289;
             this.lbl7.Text = "SpaceShip";
             // 

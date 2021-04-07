@@ -20,22 +20,6 @@ namespace SpaceManager
         {
             InitializeComponent();
         }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lbl_Passwd_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btn_Login_Click(object sender, EventArgs e)
         {
             LogIn();

@@ -41,14 +41,3 @@ C:\Users\Miguel\Desktop\GitHub\S2AM-G2-ICB0-PRJ03\Inner Ring\Controles_Usuario\o
 C:\Users\Miguel\Desktop\GitHub\S2AM-G2-ICB0-PRJ03\Inner Ring\Controles_Usuario\obj\Debug\Controles_Usuario.csproj.CopyComplete
 C:\Users\Miguel\Desktop\GitHub\S2AM-G2-ICB0-PRJ03\Inner Ring\Controles_Usuario\obj\Debug\Controles_Usuario.dll
 C:\Users\Miguel\Desktop\GitHub\S2AM-G2-ICB0-PRJ03\Inner Ring\Controles_Usuario\obj\Debug\Controles_Usuario.pdb
-C:\Users\Mario\Desktop\Github\G2Team\S2AM-G2-ICB0-PRJ03\Inner Ring\Controles_Usuario\bin\Debug\Controles_Usuario.dll
-C:\Users\Mario\Desktop\Github\G2Team\S2AM-G2-ICB0-PRJ03\Inner Ring\Controles_Usuario\bin\Debug\Controles_Usuario.pdb
-C:\Users\Mario\Desktop\Github\G2Team\S2AM-G2-ICB0-PRJ03\Inner Ring\Controles_Usuario\bin\Debug\Acceso_Dades.dll
-C:\Users\Mario\Desktop\Github\G2Team\S2AM-G2-ICB0-PRJ03\Inner Ring\Controles_Usuario\bin\Debug\Acceso_Dades.pdb
-C:\Users\Mario\Desktop\Github\G2Team\S2AM-G2-ICB0-PRJ03\Inner Ring\Controles_Usuario\obj\Debug\Controles_Usuario.csprojAssemblyReference.cache
-C:\Users\Mario\Desktop\Github\G2Team\S2AM-G2-ICB0-PRJ03\Inner Ring\Controles_Usuario\obj\Debug\Controles_Usuario.SWCodi.resources
-C:\Users\Mario\Desktop\Github\G2Team\S2AM-G2-ICB0-PRJ03\Inner Ring\Controles_Usuario\obj\Debug\Controles_Usuario.csproj.GenerateResource.cache
-C:\Users\Mario\Desktop\Github\G2Team\S2AM-G2-ICB0-PRJ03\Inner Ring\Controles_Usuario\obj\Debug\Controles_Usuario.csproj.CoreCompileInputs.cache
-C:\Users\Mario\Desktop\Github\G2Team\S2AM-G2-ICB0-PRJ03\Inner Ring\Controles_Usuario\obj\Debug\Controles_Usuario.csproj.CopyComplete
-C:\Users\Mario\Desktop\Github\G2Team\S2AM-G2-ICB0-PRJ03\Inner Ring\Controles_Usuario\obj\Debug\Controles_Usuario.dll
-C:\Users\Mario\Desktop\Github\G2Team\S2AM-G2-ICB0-PRJ03\Inner Ring\Controles_Usuario\obj\Debug\Controles_Usuario.pdb

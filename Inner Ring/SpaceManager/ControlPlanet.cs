@@ -29,5 +29,20 @@ namespace SpaceManager
         {
             OpenImage();
         }
+
+        private void lbl4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbl5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbl6_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

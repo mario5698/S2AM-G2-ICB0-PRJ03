@@ -34,7 +34,7 @@ namespace GalaxyUI
             // 
             // panel
             // 
-            this.panel.BackColor = System.Drawing.Color.Black;
+            this.panel.BackColor = System.Drawing.Color.Transparent;
             this.panel.BackgroundImage = global::GalaxyUI.Properties.Resources.panel_1A;
             this.panel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel.Dock = System.Windows.Forms.DockStyle.Fill;

@@ -66,7 +66,7 @@ namespace Inner_Ring_Spaceship
         static string enviar = Application.StartupPath + "\\fitxers\\PACTOTAL.txt";
         //decompress
         string documents = "";
-        string[] head= new string[6] {"id", "descSec", "descPla", "lat", "long", "codeDelivery"};
+        string[] head = new string[6] { "id", "descSec", "descPla", "lat", "long", "codeDelivery" };
 
         int numeroTema;
         ThemeName nombreTema;
@@ -99,7 +99,7 @@ namespace Inner_Ring_Spaceship
 
             btn_send_file.label.Click += send_Pac;
             btn_send_file.pictureBox.Click += send_Pac;
-        
+
         }
 
         private void AsignarTema()
@@ -147,14 +147,14 @@ namespace Inner_Ring_Spaceship
         }
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+
         }
         private void getSpaceshipData(string spaceshipCode)
         {
             try
             {
                 DataSet infoSpaceship;
-                infoSpaceship = Acc.PortarPerConsulta("select CodeSpaceShip, IPSpaceShip, PortSpaceShip, PortSpaceShip1, DescSpaceShipType from SpaceShips, SpaceShipTypes where CodeSpaceShip = '"+spaceshipCode+"'");
+                infoSpaceship = Acc.PortarPerConsulta("select CodeSpaceShip, IPSpaceShip, PortSpaceShip, PortSpaceShip1, DescSpaceShipType from SpaceShips, SpaceShipTypes where CodeSpaceShip = '" + spaceshipCode + "'");
                 codeSpaceshipSelected = infoSpaceship.Tables[0].Rows[0]["codespaceship"].ToString();
                 ipSpaceshipSelected = infoSpaceship.Tables[0].Rows[0]["ipspaceship"].ToString();
                 portSpaceshipSelected = infoSpaceship.Tables[0].Rows[0]["portspaceship"].ToString();
@@ -208,13 +208,13 @@ namespace Inner_Ring_Spaceship
             DataSet deliveryPlanets = Acc.PortarPerConsulta(query);
             spaceShip = Acc.PortarPerConsulta("select * from SpaceShips");
             planets = Acc.PortarPerConsulta("select * from planets");
-       
+
             infoDelivery = deliveryPlanets.Tables[0];
             dataGridView1.DataSource = infoDelivery;
-           dataGridView1.Columns["idplanet"].Visible = false;
+            dataGridView1.Columns["idplanet"].Visible = false;
         }
 
-        
+
 
         private void getInfoPlanet(object sender, EventArgs e)
         {
@@ -240,7 +240,7 @@ namespace Inner_Ring_Spaceship
         private void getCodeValidation()
         {
             DataSet codeValidation;
-            codeValidation = Acc.PortarPerConsulta("select * from InnerEncryption where idPlanet = "+idPlanetSelected);
+            codeValidation = Acc.PortarPerConsulta("select * from InnerEncryption where idPlanet = " + idPlanetSelected);
             idInnerEncryption = codeValidation.Tables[0].Rows[0]["idinnerencryption"].ToString();
             codeInnerEncryption = codeValidation.Tables[0].Rows[0]["validationcode"].ToString();
 
@@ -278,7 +278,7 @@ namespace Inner_Ring_Spaceship
                         }
                             ));
                 }
-                
+
             }
             else if (posicion == 2)
             {
@@ -595,7 +595,7 @@ namespace Inner_Ring_Spaceship
 
         private void CleanDir(string dir)
         {
-           try
+            try
             {
                 DirectoryInfo directory = new DirectoryInfo(dir);
                 if (!Directory.Exists(dir))
@@ -620,7 +620,7 @@ namespace Inner_Ring_Spaceship
         }
         #endregion
 
-     
+
         private void send_Pac(object sender, EventArgs e)
         {
             if (File.Exists(enviar))
@@ -648,7 +648,8 @@ namespace Inner_Ring_Spaceship
             }
         }
 
-        private void listenerDisconected(object sender, EventArgs e) {
+        private void listenerDisconected(object sender, EventArgs e)
+        {
             try
             {
                 createThreadToListener();
@@ -671,7 +672,7 @@ namespace Inner_Ring_Spaceship
             MessageBox.Show(dataGridView1.SelectedCells[0].Value.ToString());
         }
 
-      
+
         private void galaxyButton1_Click(object sender, EventArgs e)
         {
             try

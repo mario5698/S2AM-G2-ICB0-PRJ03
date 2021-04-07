@@ -16,7 +16,9 @@ namespace SpaceManager
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ControlManager("admin", "123456aA"));
+            //Application.Run(new ControlManager("admin", "123456aA"));
+            Application.Run(new LoginManager());
+
         }
     }
 }

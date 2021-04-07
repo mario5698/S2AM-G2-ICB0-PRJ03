@@ -91,7 +91,7 @@ namespace BlibliotecaG2
             if (obligatorio && this.Text == string.Empty)
             {
                 this.BackColor = Color.DarkRed;
-                this.ForeColor = Color.FromArgb(50, 60, 70);
+                this.ForeColor = Color.Black;
                 return false;
             }
             else
@@ -133,8 +133,8 @@ namespace BlibliotecaG2
         {
             if (SWTextbox_Validate())
             {
-                this.BackColor = Color.PaleGreen;
-                this.ForeColor = Color.FromArgb(50, 60, 70);
+                this.BackColor = Color.White;
+                this.ForeColor = Color.Black;
             }
         }
 
@@ -143,8 +143,8 @@ namespace BlibliotecaG2
             if (SWTextbox_Validate())
             {
 
-                this.BackColor = Color.PaleGreen;
-                this.ForeColor = Color.FromArgb(50, 60, 70);
+                this.BackColor = Color.White;
+                this.ForeColor = Color.Black;
                 if (_Foranea)
                 {
                     Pasar_id();
@@ -153,7 +153,7 @@ namespace BlibliotecaG2
             else
             {
                 this.BackColor = Color.DarkRed;
-                this.ForeColor = Color.FromArgb(50, 60, 70);
+                this.ForeColor = Color.Black;
             }
         }
 
@@ -170,8 +170,8 @@ namespace BlibliotecaG2
         }
         private void SWTextbox_Enter(object sender, EventArgs e)
         {
-            this.ForeColor = Color.PaleGreen;
-            this.BackColor = Color.FromArgb(50, 60, 70);
+            this.ForeColor = Color.White;
+            this.BackColor = Color.Black;
         }
     }
 }

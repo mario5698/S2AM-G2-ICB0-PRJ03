@@ -34,10 +34,10 @@
             // 
             // TXT_SWCodi
             // 
-            this.TXT_SWCodi.BackColor = System.Drawing.Color.PaleGreen;
+            this.TXT_SWCodi.BackColor = System.Drawing.Color.White;
             this.TXT_SWCodi.Dock = System.Windows.Forms.DockStyle.Left;
             this.TXT_SWCodi.Font = new System.Drawing.Font("Arial", 10F);
-            this.TXT_SWCodi.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(60)))), ((int)(((byte)(70)))));
+            this.TXT_SWCodi.ForeColor = System.Drawing.Color.Black;
             this.TXT_SWCodi.Location = new System.Drawing.Point(0, 0);
             this.TXT_SWCodi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TXT_SWCodi.Name = "TXT_SWCodi";
@@ -50,10 +50,10 @@
             // 
             // TXT_SWDesc
             // 
-            this.TXT_SWDesc.BackColor = System.Drawing.Color.PaleGreen;
+            this.TXT_SWDesc.BackColor = System.Drawing.Color.White;
             this.TXT_SWDesc.Dock = System.Windows.Forms.DockStyle.Right;
             this.TXT_SWDesc.Font = new System.Drawing.Font("Arial", 10F);
-            this.TXT_SWDesc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(60)))), ((int)(((byte)(70)))));
+            this.TXT_SWDesc.ForeColor = System.Drawing.Color.Black;
             this.TXT_SWDesc.HideSelection = false;
             this.TXT_SWDesc.Location = new System.Drawing.Point(176, 0);
             this.TXT_SWDesc.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);

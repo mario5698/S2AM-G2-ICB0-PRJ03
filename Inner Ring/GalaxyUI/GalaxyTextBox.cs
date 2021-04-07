@@ -16,7 +16,6 @@ namespace GalaxyUI
         private string _texto = "Introduce algo";
         ThemeName _nombreTema = ThemeName.Vitruvian;
         GalaxyTheme _tema;
-        //string _texto; 
 
         public string Texto
         {

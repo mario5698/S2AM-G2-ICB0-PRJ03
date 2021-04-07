@@ -52,5 +52,10 @@ namespace SpaceManager
         {
             ShowForms(ddc);
         }
+
+        private void btn_Exit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
