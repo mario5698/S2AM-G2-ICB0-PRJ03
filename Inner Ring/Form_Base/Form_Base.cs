@@ -220,10 +220,5 @@ namespace Form_Base
                 }
             }
         }
-
-        private void dtgUsers_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
     }
 }

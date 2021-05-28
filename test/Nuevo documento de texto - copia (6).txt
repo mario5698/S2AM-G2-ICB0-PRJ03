@@ -1,2 +1,0 @@
-Pull Request 
-Dentro de la propia página nos permitirá hacer un pull request, para que sirve esto depende de cómo este configurado podemos dejar que otras personas revisen nuestro código escrito y que puedan comparar con el ya existente 

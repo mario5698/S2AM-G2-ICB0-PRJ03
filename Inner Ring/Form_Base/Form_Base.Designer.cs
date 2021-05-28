@@ -153,7 +153,6 @@
             this.dtgUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dtgUsers.Size = new System.Drawing.Size(1195, 243);
             this.dtgUsers.TabIndex = 93;
-            this.dtgUsers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgUsers_CellContentClick);
             this.dtgUsers.CellEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dtgUsers_CellEnter);
             this.dtgUsers.CurrentCellChanged += new System.EventHandler(this.ChangeImage);
             // 

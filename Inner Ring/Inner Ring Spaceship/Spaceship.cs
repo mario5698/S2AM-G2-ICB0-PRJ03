@@ -84,9 +84,7 @@ namespace Inner_Ring_Spaceship
             Dtg_header();
         }
 
-
         private void AsignarFunciones()
-
         {
             btn_start.label.Click += activateListener;
             btn_start.pictureBox.Click += activateListener;
@@ -99,7 +97,6 @@ namespace Inner_Ring_Spaceship
 
             btn_send_file.label.Click += send_Pac;
             btn_send_file.pictureBox.Click += send_Pac;
-
         }
 
         private void AsignarTema()
@@ -111,7 +108,6 @@ namespace Inner_Ring_Spaceship
             else { nombreTema = ThemeName.Igni; }
 
             BackgroundImage = tema.ObtenerFondo(numeroTema);
-
 
             foreach (Control c in Controls)
             {
@@ -145,10 +141,12 @@ namespace Inner_Ring_Spaceship
                 dataGridView1.Columns[i].HeaderText = head[i].ToString();
             }
         }
+
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
+
         private void getSpaceshipData(string spaceshipCode)
         {
             try
@@ -160,7 +158,6 @@ namespace Inner_Ring_Spaceship
                 portSpaceshipSelected = infoSpaceship.Tables[0].Rows[0]["portspaceship"].ToString();
                 portSpaceship1Selected = infoSpaceship.Tables[0].Rows[0]["portspaceship1"].ToString();
                 Spaceshiptype = infoSpaceship.Tables[0].Rows[0]["DescSpaceShipType"].ToString();
-
                 setValues();
             }
             catch (Exception ex)
@@ -181,7 +178,6 @@ namespace Inner_Ring_Spaceship
 
         private void sendMessage(string message = null, byte[] encrypted = null)
         {
-
             Client = new TcpClient(ipPlanetSelected, Int32.Parse(portPlanetSelected));
             NetStream = Client.GetStream();
             byte[] frase = null;
@@ -195,8 +191,6 @@ namespace Inner_Ring_Spaceship
             }
             NetStream.Write(frase, 0, frase.Length);
         }
-
-
 
         #region Obtener Planetas, naves, Info Planetas, Codigo Envio
         private void getAllPlanetsToDelivery(string spaceshipCode)
@@ -275,10 +269,8 @@ namespace Inner_Ring_Spaceship
                         delegate ()
                         {
                             lbx_Missatges.Items.Add("+ Encripted Message Sent");
-                        }
-                            ));
+                        }));
                 }
-
             }
             else if (posicion == 2)
             {
@@ -323,7 +315,6 @@ namespace Inner_Ring_Spaceship
                         path = Application.StartupPath + "\\fitxers\\PAC" + i + ".txt";
                         using (var inputStream = File.OpenRead(path))
                         {
-                            // Buffer size can be passed as the second argument.
                             inputStream.CopyTo(outputStream);
                         }
                     }
@@ -517,7 +508,6 @@ namespace Inner_Ring_Spaceship
         public void ReceiveTCP(int portN)
         {
             DateTime thisDay = DateTime.Today;
-            //TcpListener ListenerRecieveCompressed = null;
             string name = "PACS.zip";
             string create = "";
             documents = name;
